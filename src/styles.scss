@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+
+html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding-bottom: 50px;
+}
+
+.main-container,
+.marcador {
+    width: 100%;
+    border-style: solid;
+    text-align: center;
+}
+
+.main-container {
+    margin-top: 60px;
+    height: 70%;
+}
+
+.marcador {
+    margin-top: 20px;
+    height: 20%;
+}
