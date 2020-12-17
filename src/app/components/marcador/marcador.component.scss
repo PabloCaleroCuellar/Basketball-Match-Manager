@@ -1,0 +1,99 @@
+body{
+    color: white;
+    background-color: rgb(61, 58, 58);
+}
+
+div {
+    display: table;
+}
+
+p {
+    text-align:center; 
+    vertical-align: middle;
+    display: table-cell;   
+}
+
+#marcador-local, #marcador-visitante, #timer {
+    height: 100%;
+    float: left;
+}
+
+.local {
+    float: left;
+}
+
+.visitante {
+    float: right;
+}
+
+#marcador-local, #marcador-visitante {
+    width: 39%;
+    margin-top: 1px;
+}
+
+#timer {
+    margin-top: 3px;
+    margin-left: 1%;
+    margin-right: 1%;
+    width: 20%;
+}
+
+#contador, #cuarto, #nombre-equipo, #puntos, #time-outs, #faltas {
+    border-style: solid;
+    border-color:grey;
+    font-weight: bolder;
+}
+
+#contador {
+    margin-bottom: 2px;
+    width: 100%;
+    height: 49%;
+    font-size: 36px;
+    border-width: 5px;
+}
+
+#cuarto {
+    width: 50%;
+    height: 49%;
+    font-size: 36px;
+    border-width: 5px;
+    margin: 0 auto;
+}
+
+#time-outs, #faltas {
+    width: 75%;
+    height: 25%;
+    border-width: 2px;
+}
+
+#marcador {
+    width: 100%;
+    height: 50%;
+}
+
+#nombre-equipo {
+    width: 75%;
+    height: 100%;
+    font-size: 24px;
+    border-width: 2px;
+}
+
+#puntos {
+    width: 24%;
+    height: 100%;
+    font-size: 42px;
+    border-width: 2px;
+}
+
+#puntos.local {
+    margin-left: 2px;
+}
+
+#puntos.visitante {
+    margin-right: 2px;
+}
+
+#time-outs, #marcador {
+    margin-top: 2px;
+}
+
