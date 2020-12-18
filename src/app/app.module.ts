@@ -8,6 +8,7 @@ import { PartidoComponent } from './components/partido/partido.component';
 import { EstadisticasComponent } from './components/estadisticas/estadisticas.component';
 import { DatosEquipoComponent } from './components/datos-equipo/datos-equipo.component';
 import { MarcadorComponent } from './components/marcador/marcador.component';
+import { DataService } from './service/data.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { MarcadorComponent } from './components/marcador/marcador.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -4,3 +4,26 @@ body {
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }
+
+#canasta {
+    display: table;
+}
+
+p, h3 {
+    text-align:center; 
+    vertical-align: middle;
+    display: table-cell;   
+}
+
+#partido-local, #partido-visitante {
+    float: left;
+    width: 50%;
+    height: 100%;
+    text-align: center;
+}
+
+#canasta {
+    width: 60%;
+    height: 20%;
+    margin: 0 auto;
+}

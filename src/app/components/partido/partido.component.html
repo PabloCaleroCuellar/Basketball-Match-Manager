@@ -1,5 +1,21 @@
 <body>
-    <p>
-        Componente donde se rellenarán todas las acciones que transcurren durante el partido
-    </p>
+    <div id="partido-local">
+        <h2>acciones del {{partido._equipoLocal.toUpperCase()}}</h2>
+        <div id="canasta">
+            <h3>CANASTA</h3>
+            <p><button type="button" class="btn btn-success" (click)="basketLocal(1)">+1</button></p>
+            <p><button type="button" class="btn btn-success" (click)="basketLocal(2)">+2</button></p>
+            <p><button type="button" class="btn btn-success" (click)="basketLocal(3)">+3</button></p>
+        </div>
+    </div>
+    <div id="partido-visitante">
+        <h2>acciones del {{partido._equipoVisitante.toUpperCase()}}</h2>
+        <div id="canasta">
+            <h3>CANASTA</h3>
+            <p><button type="button" class="btn btn-success" (click)="basketVisitante(1)">+1</button></p>
+            <p><button type="button" class="btn btn-success" (click)="basketVisitante(2)">+2</button></p>
+            <p><button type="button" class="btn btn-success" (click)="basketVisitante(3)">+3</button></p>
+        </div>
+        
+    </div>
 </body>

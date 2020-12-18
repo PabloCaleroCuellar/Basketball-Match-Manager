@@ -5,10 +5,10 @@
         </div>
         <div class="local" id="marcador">
             <div class="local" id="nombre-equipo">
-                <p>Nombre de equipo local</p>
+                <p>{{partido._equipoLocal.toUpperCase()}}</p>
             </div>
             <div class="local" id="puntos">
-                <p>88</p>
+                <p>{{partido._puntosLocal}}</p>
             </div>
         </div>
         <div class="local" id="time-outs">
@@ -18,10 +18,10 @@
     
     <div id="timer">
         <div id="contador">
-             <p>00:00</p>
+             <p>{{partido._reloj}}</p>
         </div>
         <div id="cuarto">
-            <p>4</p>
+            <p>{{partido._cuarto}}</p>
         </div>
     </div>
     
@@ -31,10 +31,10 @@
         </div>
         <div class="visitante" id="marcador">
             <div class="visitante" id="nombre-equipo">
-                <p>Nombre de equipo visitante</p>
+                <p>{{partido._equipoVisitante.toUpperCase()}}</p>
             </div>
             <div class="visitante" id="puntos">
-                <p>88</p>
+                <p>{{partido._puntosVisitante}}</p>
             </div>
         </div>
         <div class ="visitante" id="time-outs">

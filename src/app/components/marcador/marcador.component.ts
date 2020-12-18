@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Partido } from 'src/app/model/partido';
+import { DataService } from '../../service/data.service';
 
 @Component({
   selector: 'app-marcador',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MarcadorComponent implements OnInit {
 
-  constructor() { }
+  partido: Partido
+
+  constructor(private data: DataService) { }
 
   ngOnInit() {
+    this.data.match.subscribe(partido => this.partido = partido)
   }
 
 }
