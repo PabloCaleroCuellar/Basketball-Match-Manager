@@ -10,8 +10,6 @@ import { DataService } from '../../service/data.service';
 export class MarcadorComponent implements OnInit {
 
   partido: Partido
-  minutos: number
-  segundos: number
 
   constructor(private data: DataService) { }
 
