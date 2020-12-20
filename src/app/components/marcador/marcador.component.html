@@ -3,11 +3,11 @@
         <div class="local" id="faltas">
             <div id="contenedor-faltas">
                 <p>Faltas:</p>
-                <div class="paralelogramo" [ngClass]="{'bg-light': partido._faltasLocal >=1}"></div>
-                <div class="paralelogramo" [ngClass]="{'bg-light': partido._faltasLocal >=2}"></div>
-                <div class="paralelogramo" [ngClass]="{'bg-light': partido._faltasLocal >=3}"></div>
-                <div class="paralelogramo" [ngClass]="{'bg-light': partido._faltasLocal >=4}"></div>
-                <div class="paralelogramo" [ngClass]="{'bg-danger': partido._faltasLocal >=5}"></div>
+                <div class="falta-equipo" [ngClass]="{'bg-light': partido._faltasLocal >=1}"></div>
+                <div class="falta-equipo" [ngClass]="{'bg-light': partido._faltasLocal >=2}"></div>
+                <div class="falta-equipo" [ngClass]="{'bg-light': partido._faltasLocal >=3}"></div>
+                <div class="falta-equipo" [ngClass]="{'bg-light': partido._faltasLocal >=4}"></div>
+                <div class="falta-equipo" [ngClass]="{'bg-danger': partido._faltasLocal >=5}"></div>
             </div>
         </div>
         <div class="local" id="marcador">
@@ -36,11 +36,11 @@
         <div class="visitante" id="faltas">
             <div id="contenedor-faltas">
                 <p>Faltas:</p>
-                <div class="paralelogramo" [ngClass]="{'bg-light': partido._faltasVisitante >=1}"></div>
-                <div class="paralelogramo" [ngClass]="{'bg-light': partido._faltasVisitante >=2}"></div>
-                <div class="paralelogramo" [ngClass]="{'bg-light': partido._faltasVisitante >=3}"></div>
-                <div class="paralelogramo" [ngClass]="{'bg-light': partido._faltasVisitante >=4}"></div>
-                <div class="paralelogramo" [ngClass]="{'bg-danger': partido._faltasVisitante >=5}"></div>
+                <div class="falta-equipo" [ngClass]="{'bg-light': partido._faltasVisitante >=1}"></div>
+                <div class="falta-equipo" [ngClass]="{'bg-light': partido._faltasVisitante >=2}"></div>
+                <div class="falta-equipo" [ngClass]="{'bg-light': partido._faltasVisitante >=3}"></div>
+                <div class="falta-equipo" [ngClass]="{'bg-light': partido._faltasVisitante >=4}"></div>
+                <div class="falta-equipo" [ngClass]="{'bg-danger': partido._faltasVisitante >=5}"></div>
             </div>
         </div>
         <div class="visitante" id="marcador">
