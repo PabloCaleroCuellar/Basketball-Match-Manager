@@ -45,6 +45,14 @@ export class PartidoComponent implements OnInit {
     this.partido._puntosVisitante += value
   }
 
+  faltaLocal(){
+    this.partido._faltasLocal++;
+  }
+
+  faltaVisitante(){
+    this.partido._faltasVisitante++;
+  }
+
   Interval() {
     let botonTimer = document.getElementById("timer");
     if (botonTimer.innerHTML == "Reanudar partido") {
@@ -94,6 +102,8 @@ export class PartidoComponent implements OnInit {
             this.partido._minutos = 10;
             this.partido._segundos = 0;
           }
+          this.partido._faltasLocal = 0;
+          this.partido._faltasVisitante = 0;
         }
       }, 1000);
     } 

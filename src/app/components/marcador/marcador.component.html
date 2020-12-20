@@ -1,7 +1,14 @@
 <body>
     <div id="marcador-local">
         <div class="local" id="faltas">
-            <p>Faltas</p>
+            <div id="contenedor-faltas">
+                <p>Faltas:</p>
+                <div class="paralelogramo" [ngClass]="{'bg-light': partido._faltasLocal >=1}"></div>
+                <div class="paralelogramo" [ngClass]="{'bg-light': partido._faltasLocal >=2}"></div>
+                <div class="paralelogramo" [ngClass]="{'bg-light': partido._faltasLocal >=3}"></div>
+                <div class="paralelogramo" [ngClass]="{'bg-light': partido._faltasLocal >=4}"></div>
+                <div class="paralelogramo" [ngClass]="{'bg-danger': partido._faltasLocal >=5}"></div>
+            </div>
         </div>
         <div class="local" id="marcador">
             <div class="local" id="nombre-equipo">
@@ -27,7 +34,14 @@
     
     <div id="marcador-visitante">
         <div class="visitante" id="faltas">
-            <p>Faltas</p>
+            <div id="contenedor-faltas">
+                <p>Faltas:</p>
+                <div class="paralelogramo" [ngClass]="{'bg-light': partido._faltasVisitante >=1}"></div>
+                <div class="paralelogramo" [ngClass]="{'bg-light': partido._faltasVisitante >=2}"></div>
+                <div class="paralelogramo" [ngClass]="{'bg-light': partido._faltasVisitante >=3}"></div>
+                <div class="paralelogramo" [ngClass]="{'bg-light': partido._faltasVisitante >=4}"></div>
+                <div class="paralelogramo" [ngClass]="{'bg-danger': partido._faltasVisitante >=5}"></div>
+            </div>
         </div>
         <div class="visitante" id="marcador">
             <div class="visitante" id="nombre-equipo">

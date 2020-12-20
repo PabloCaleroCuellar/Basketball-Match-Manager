@@ -97,3 +97,28 @@ p {
     margin-top: 2px;
 }
 
+#faltas p, #faltas .paralelogramo {
+    display: table-cell;   
+}
+
+#faltas p {
+    width: 5%;
+}
+
+#contenedor-faltas {
+    text-align: center;
+    width: 95%;
+    margin-top: 2px;
+}
+
+.paralelogramo {
+    width: 10%; 
+    height: 70%;
+    border: 3px solid red; 
+    -webkit-transform: skew(-30deg);
+    -moz-transform: skew(-30deg);
+    -ms-transform: skew(-30deg);
+    -o-transform: skew(-30deg);
+    transform: skew(-30deg);
+}
+

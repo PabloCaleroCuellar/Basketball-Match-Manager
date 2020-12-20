@@ -7,6 +7,9 @@
             <p><button type="button" class="btn btn-success" (click)="basketLocal(2)">+2</button></p>
             <p><button type="button" class="btn btn-success" (click)="basketLocal(3)">+3</button></p>
         </div>
+        <div id="falta">
+            <p><button type="button" class="btn btn-danger" (click)="faltaLocal(1)">FALTA</button></p>
+        </div>
     </div>
     <div id="partido-visitante">
         <h2>acciones del {{partido._equipoVisitante.toUpperCase()}}</h2>
@@ -15,6 +18,9 @@
             <p><button type="button" class="btn btn-success" (click)="basketVisitante(1)">+1</button></p>
             <p><button type="button" class="btn btn-success" (click)="basketVisitante(2)">+2</button></p>
             <p><button type="button" class="btn btn-success" (click)="basketVisitante(3)">+3</button></p>
+        </div>
+        <div id="falta">
+            <p><button type="button" class="btn btn-danger" (click)="faltaVisitante(1)">FALTA</button></p>
         </div>
     </div>
     <button id="timer" class="btn btn-success" (click)="Interval()">Reanudar partido</button>
