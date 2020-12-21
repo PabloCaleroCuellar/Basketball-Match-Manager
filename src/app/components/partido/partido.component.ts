@@ -58,6 +58,7 @@ export class PartidoComponent implements OnInit {
     this.partido._tiemposLocal--;
     clearInterval(interval);
     isTimerOn = false;
+    this.Interval()
   }
 
   tiempoMuertoVisitante() {
