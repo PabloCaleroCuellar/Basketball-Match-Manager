@@ -55,17 +55,35 @@ export class PartidoComponent implements OnInit {
   }
 
   tiempoMuertoLocal() {
-    this.partido._tiemposLocal--;
-    clearInterval(interval);
-    isTimerOn = false;
-    this.Interval()
+    if(!isTimerOn) {
+      this.partido._tiemposLocal--;
+      (<HTMLInputElement> document.getElementById("tiempoMuertoLocal")).disabled = true;
+      (<HTMLInputElement> document.getElementById("tiempoMuertoVisitante")).disabled = true;
+    }
+    else {
+      this.partido._tiemposLocal--;
+      clearInterval(interval);
+      isTimerOn = false;
+      (<HTMLInputElement> document.getElementById("tiempoMuertoLocal")).disabled = true;
+      (<HTMLInputElement> document.getElementById("tiempoMuertoVisitante")).disabled = true;
+      this.Interval()
+    }
   }
 
   tiempoMuertoVisitante() {
-    this.partido._tiemposVisitante--;
-    clearInterval(interval);
-    isTimerOn = false;
-    this.Interval()
+    if(!isTimerOn) {
+      this.partido._tiemposVisitante--;
+      (<HTMLInputElement> document.getElementById("tiempoMuertoLocal")).disabled = true;
+      (<HTMLInputElement> document.getElementById("tiempoMuertoVisitante")).disabled = true;
+    }
+    else{
+      this.partido._tiemposVisitante--;
+      clearInterval(interval);
+      isTimerOn = false;
+      (<HTMLInputElement> document.getElementById("tiempoMuertoLocal")).disabled = true;
+      (<HTMLInputElement> document.getElementById("tiempoMuertoVisitante")).disabled = true;
+      this.Interval()
+    }
   }
 
   Interval() {
@@ -82,6 +100,12 @@ export class PartidoComponent implements OnInit {
     if (!interval) {
       isTimerOn = true
       interval = setInterval(()=> {
+        if(this.partido._tiemposLocal > 0) {
+          (<HTMLInputElement> document.getElementById("tiempoMuertoLocal")).disabled = false;
+        }
+        if(this.partido._tiemposVisitante) {
+          (<HTMLInputElement> document.getElementById("tiempoMuertoVisitante")).disabled = false;
+        }
         this.partido._segundos--;
         if(this.partido._segundos < 0) {
           this.partido._minutos--;
@@ -119,6 +143,8 @@ export class PartidoComponent implements OnInit {
           }
           this.partido._faltasLocal = 0;
           this.partido._faltasVisitante = 0;
+          (<HTMLInputElement> document.getElementById("tiempoMuertoLocal")).disabled = true;
+          (<HTMLInputElement> document.getElementById("tiempoMuertoVisitante")).disabled = true;
         }
       }, 1000);
     } 
