@@ -1,3 +1,4 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Partido } from 'src/app/model/partido';
 import { DataService } from '../../service/data.service';
@@ -45,12 +46,20 @@ export class PartidoComponent implements OnInit {
     this.partido._puntosVisitante += value
   }
 
-  faltaLocal(){
+  faltaLocal() {
     this.partido._faltasLocal++;
   }
 
-  faltaVisitante(){
+  faltaVisitante() {
     this.partido._faltasVisitante++;
+  }
+
+  tiempoMuertoLocal() {
+    this.partido._tiemposLocal--;
+  }
+
+  tiempoMuertoVisitante() {
+    this.partido._tiemposVisitante--;
   }
 
   Interval() {

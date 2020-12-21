@@ -97,15 +97,15 @@ p {
     margin-top: 2px;
 }
 
-#faltas p, #faltas .falta-equipo {
+#faltas p, #faltas .falta-equipo, #time-outs .tiempo-muerto {
     display: table-cell;   
 }
 
-#faltas p {
+#faltas p, #time-outs p {
     width: 5%;
 }
 
-#contenedor-faltas {
+#contenedor-faltas, #contenedor-tiempos {
     text-align: center;
     width: 95%;
     margin-top: 2px;
@@ -120,5 +120,18 @@ p {
     -ms-transform: skew(-30deg);
     -o-transform: skew(-30deg);
     transform: skew(-30deg);
+}
+
+.tiempo-muerto {
+    border: 3px solid white; 
+    width: 2%;
+    height: 50%;
+    -moz-border-radius: 35%;
+    -webkit-border-radius: 35%;
+    border-radius: 35%;
+}
+
+#time-outs {
+    text-align: left;
 }
 

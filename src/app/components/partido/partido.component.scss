@@ -28,8 +28,17 @@ p, h3 {
     margin: 0 auto;
 }
 
-#falta {
+#falta, #tiempos {
+    padding-top: 2%;
     padding-right: 40%;
     display: table;
     margin: 0 auto;
+}
+
+#faltas {
+    padding-right: 40%;
+}
+
+#tiempos {
+    padding-right: 30%;
 }
