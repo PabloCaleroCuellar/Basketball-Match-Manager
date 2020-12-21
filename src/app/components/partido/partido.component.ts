@@ -32,9 +32,9 @@ export class PartidoComponent implements OnInit {
     }
     else {
       if(isTimerOn){
-            botonTimer.setAttribute("class", "btn btn-danger")
-            botonTimer.innerHTML = "Parar tiempo";
-          }
+        botonTimer.setAttribute("class", "btn btn-danger")
+        botonTimer.innerHTML = "Parar tiempo";
+      }
     }
   }
 
@@ -56,10 +56,15 @@ export class PartidoComponent implements OnInit {
 
   tiempoMuertoLocal() {
     this.partido._tiemposLocal--;
+    clearInterval(interval);
+    isTimerOn = false;
   }
 
   tiempoMuertoVisitante() {
     this.partido._tiemposVisitante--;
+    clearInterval(interval);
+    isTimerOn = false;
+    this.Interval()
   }
 
   Interval() {
