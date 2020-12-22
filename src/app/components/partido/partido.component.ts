@@ -139,10 +139,10 @@ export class PartidoComponent implements OnInit {
       }
       isTimerOn = true
       interval = setInterval(()=> {
-        if(this.partido._tiemposLocal > 0) {
+        if(this.partido._tiemposLocal > 0 && document.getElementById("tiempoMuertoLocal")) {
           (<HTMLInputElement> document.getElementById("tiempoMuertoLocal")).disabled = false;
         }
-        if(this.partido._tiemposVisitante) {
+        if(this.partido._tiemposVisitante && document.getElementById("tiempoMuertoVisitante")) {
           (<HTMLInputElement> document.getElementById("tiempoMuertoVisitante")).disabled = false;
         }
         this.partido._segundos--;
