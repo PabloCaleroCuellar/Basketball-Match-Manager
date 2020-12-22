@@ -6,6 +6,7 @@ import { DataService } from '../../service/data.service';
 let interval;
 let partidoAcabado: boolean = false;
 let isTimerOn: boolean = false;
+let isTimeOut: boolean = false;
 
 @Component({
   selector: 'app-partido',
@@ -22,6 +23,16 @@ export class PartidoComponent implements OnInit {
   ngOnInit() {
     this.data.match.subscribe(partido => this.partido = partido)
     let botonTimer = document.getElementById("timer");
+    if(isTimeOut) {
+      (<HTMLInputElement> document.getElementById("tiempoMuertoVisitante")).disabled = true;
+      (<HTMLInputElement> document.getElementById("tiempoMuertoLocal")).disabled = true;
+    }
+    if(this.partido._tiemposVisitante <= 0) {
+      (<HTMLInputElement> document.getElementById("tiempoMuertoVisitante")).disabled = true
+    }
+    if(this.partido._tiemposLocal <= 0) {
+      (<HTMLInputElement> document.getElementById("tiempoMuertoLocal")).disabled = true
+    }
     if(partidoAcabado) {
       let botones = document.getElementsByTagName("button")
         for (let i = 0; i < botones.length; i++) {
@@ -84,6 +95,10 @@ export class PartidoComponent implements OnInit {
       (<HTMLInputElement> document.getElementById("tiempoMuertoVisitante")).disabled = true;
       this.Interval()
     }
+    isTimeOut = true;
+    if(this.partido._tiemposLocal <= 0) {
+      (<HTMLInputElement> document.getElementById("tiempoMuertoLocal")).disabled = true
+    }
   }
 
   tiempoMuertoVisitante() {
@@ -100,6 +115,11 @@ export class PartidoComponent implements OnInit {
       (<HTMLInputElement> document.getElementById("tiempoMuertoVisitante")).disabled = true;
       this.Interval()
     }
+    isTimeOut = true;
+    if(this.partido._tiemposVisitante <= 0) {
+      (<HTMLInputElement> document.getElementById("tiempoMuertoVisitante")).disabled = true
+    }
+    console.log(isTimeOut)
   }
 
   Interval() {
@@ -114,6 +134,9 @@ export class PartidoComponent implements OnInit {
     }
   
     if (!interval) {
+      if(isTimeOut) {
+        isTimeOut = false;
+      }
       isTimerOn = true
       interval = setInterval(()=> {
         if(this.partido._tiemposLocal > 0) {
