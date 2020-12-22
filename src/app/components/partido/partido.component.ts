@@ -47,11 +47,27 @@ export class PartidoComponent implements OnInit {
   }
 
   faltaLocal() {
-    this.partido._faltasLocal++;
+    if(!isTimerOn) {
+      this.partido._faltasLocal++;
+    }
+    else {
+      this.partido._faltasLocal++;
+      clearInterval(interval);
+      isTimerOn = false;
+      this.Interval()
+    }
   }
 
   faltaVisitante() {
-    this.partido._faltasVisitante++;
+    if(!isTimerOn) {
+      this.partido._faltasVisitante++;
+    }
+    else {
+      this.partido._faltasVisitante++;
+      clearInterval(interval);
+      isTimerOn = false;
+      this.Interval()
+    }
   }
 
   tiempoMuertoLocal() {
