@@ -9,6 +9,7 @@ import { EstadisticasComponent } from './components/estadisticas/estadisticas.co
 import { DatosEquipoComponent } from './components/datos-equipo/datos-equipo.component';
 import { MarcadorComponent } from './components/marcador/marcador.component';
 import { DataService } from './service/data.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { DataService } from './service/data.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

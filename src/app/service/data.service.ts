@@ -5,7 +5,7 @@ import { Partido } from '../model/partido';
 @Injectable()
 export class DataService {
 
-  private partido = new BehaviorSubject<Partido>(new Partido("equipo local", "equipo visitante", 2, 10, 0, 20, 16, 0, 0, 6, 6))
+  private partido = new BehaviorSubject<Partido>(new Partido("", "", null, null, null, null, null, null, null, null, null))
   match = this.partido.asObservable();
 
   constructor() { }

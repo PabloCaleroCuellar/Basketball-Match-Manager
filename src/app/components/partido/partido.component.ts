@@ -1,4 +1,3 @@
-import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Partido } from 'src/app/model/partido';
 import { DataService } from '../../service/data.service';
@@ -7,6 +6,7 @@ let interval;
 let partidoAcabado: boolean = false;
 let isTimerOn: boolean = false;
 let isTimeOut: boolean = false;
+let partidoEmpezado: boolean = false;
 
 @Component({
   selector: 'app-partido',
@@ -23,6 +23,19 @@ export class PartidoComponent implements OnInit {
   ngOnInit() {
     this.data.match.subscribe(partido => this.partido = partido)
     let botonTimer = document.getElementById("timer");
+    if(this.partido._cuarto != null) {
+      partidoEmpezado = true
+    }
+    if(!partidoEmpezado) {
+      let botones = document.getElementsByTagName("button")
+      for (let i = 0; i < botones.length; i++) {
+        (<HTMLInputElement> botones[i]).disabled = true;
+      }
+      botonTimer.setAttribute("class", "btn btn-warning")
+      if (botonTimer.innerHTML == "Reanudar partido") {
+        botonTimer.innerHTML = "Rellene los datos para empezar el partido";
+      }
+    }
     if(isTimeOut) {
       (<HTMLInputElement> document.getElementById("tiempoMuertoVisitante")).disabled = true;
       (<HTMLInputElement> document.getElementById("tiempoMuertoLocal")).disabled = true;
@@ -119,7 +132,6 @@ export class PartidoComponent implements OnInit {
     if(this.partido._tiemposVisitante <= 0) {
       (<HTMLInputElement> document.getElementById("tiempoMuertoVisitante")).disabled = true
     }
-    console.log(isTimeOut)
   }
 
   Interval() {
