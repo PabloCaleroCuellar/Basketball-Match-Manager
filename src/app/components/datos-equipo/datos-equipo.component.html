@@ -1,12 +1,56 @@
 <div class="container">
     <form>
-        <div class="form-group">
-            <label for="nombreEquipoLocal">Equipo local</label>
+        <div id="local" class="form-group">
+            <label for="nombreEquipoLocal">Nombre equipo local</label>
             <input type="text" name="nombreEquipoLocal" class="form-control" id="nombreEquipoLocal" placeholder="{{partido._equipoLocal}}" [(ngModel)]="equipoLocal" [disabled]="partido._cuarto">
+            <label for="jugadoresEquipoLocal">Nº jugadores equipo local</label>
+            <select class="form-control" id="selectLocal" (change)="setPlayers('Local')">
+                <option value="0"></option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+              </select>
+              <div *ngFor="let jugador of maximoJugadores;" class="jugadores">
+                <div id="jugadorLocal{{jugador}}" class="card" style="width: 100%; display: none; margin-top: 10%;">
+                    <ul class="list-group list-group-flush">
+                        <div class="card-header bg-light">Jugador</div>
+                        <li id="nombreJugadorLocal{{jugador}}" class="list-group-item" (click)="deleteNameLocalPlayer(jugador)">Nombre jugador</li>
+                        <li id="apellidosJugadorLocal{{jugador}}" class="list-group-item" (click)="deleteSurnameLocalPlayer(jugador)">Apellidos jugador</li>
+                        <li id="numeroJugadorLocal{{jugador}}" class="list-group-item" (click)="deleteNumberLocalPlayer(jugador)">Número jugador</li>
+                    </ul>
+                  </div>
+              </div>
         </div>
-        <div class="form-group">
-            <label for="nombreEquipoVisitante">Equipo visitante</label>
+        <div id="visitante" class="form-group">
+            <label for="nombreEquipoVisitante">Nombre equipo visitante</label>
             <input type="text" name="nombreEquipoVisitante" class="form-control" id="nombreEquipoVisitante" placeholder="{{partido._equipoVisitante}}" [(ngModel)]="equipoVisitante" [disabled]="partido._cuarto">
+            <label for="jugadoresEquipoVisitante">Nº jugadores equipo visitante</label>
+            <select class="form-control" id="selectVisitante" (change)="setPlayers('Visitante')">
+                <option value="0"></option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+              </select>
+              <div *ngFor="let jugador of maximoJugadores;" class="jugadores">
+                <div id="jugadorVisitante{{jugador}}" class="card" style="width: 100%; display: none; margin-top: 10%">
+                    <ul class="list-group list-group-flush">
+                        <div class="card-header bg-light">Jugador</div>
+                        <li id="nombreJugadorVisitante{{jugador}}" class="list-group-item" (click)="deleteNameAwayPlayer(jugador)">Nombre jugador</li>
+                        <li id="apellidosJugadorVisitante{{jugador}}" class="list-group-item" (click)="deleteSurnameAwayPlayer(jugador)">Apellidos jugador</li>
+                        <li id="numeroJugadorVisitante{{jugador}}" class="list-group-item" (click)="deleteNumberAwayPlayer(jugador)">Número jugador</li>
+                    </ul>
+                  </div>
+              </div>
         </div>
         <p><button type="button" class="btn btn-primary" [disabled]="!equipoLocal || !equipoVisitante" (click)="setMatch()">Rellenar datos de los equipos</button></p>
     </form>

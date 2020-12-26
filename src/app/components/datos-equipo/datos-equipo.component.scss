@@ -1,8 +1,36 @@
-.container {
+/*.container {
     padding-top: 5%;
-}
+}*/
 
 form {
+    text-align: center;
     margin: 0 auto;
-    width: 50%;
+    width: 100%;
+}
+
+form div {
+    text-align: left;
+}
+
+#local, #visitante {
+    float: left;
+    width: 45%;
+    height: 100%;
+    margin-right: 5%;
+}
+
+.jugadores {
+    float: left;
+    width: 19%;
+    margin-bottom: 1%;
+    margin-right: 1%;
+}
+
+.list-group-item {
+    font-size: 12px;
+}
+
+.card-header {
+    font-size: 12px;
+    font-weight: bolder;
 }
