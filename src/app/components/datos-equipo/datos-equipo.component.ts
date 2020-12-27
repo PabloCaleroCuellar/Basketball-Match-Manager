@@ -11,8 +11,8 @@ import { Router } from '@angular/router';
 })
 export class DatosEquipoComponent implements OnInit {
 
-  maximoJugadores:number[] = [1,2,3,4,5,6,7,8,9,10,11,12]
-
+  titulares:number[] = [1,2,3,4,5]
+  suplentes:number[] = [6,7,8,9,10,11,12]
   partido: Partido
 
   constructor(private data: DataService, private router: Router) { }
@@ -22,6 +22,7 @@ export class DatosEquipoComponent implements OnInit {
     if(this.partido._cuarto != null) {
       (<HTMLInputElement>document.getElementById("nombreEquipoLocal")).disabled;
       (<HTMLInputElement>document.getElementById("nombreEquipoVisitante")).disabled;
+      document.getElementById("boton").style.display = "none"
     }
   }
 
@@ -38,19 +39,13 @@ export class DatosEquipoComponent implements OnInit {
     this.router.navigateByUrl('/partido');
   }
 
-  setPlayers(team: string) {
+  /*setPlayers(team: string) {
     if(team == "Local") {
-      for(let all = 0; all < this.maximoJugadores.length; all++) {
+      for(let all = 0; all < this.titulares.length; all++) {
         let id = "jugadorLocal" + (all+1).toString()
         document.getElementById(id).style.display = "none"
       }
       let selectLocal = parseInt((<HTMLInputElement> document.getElementById("selectLocal")).value);
-
-      //QUITAR ESTO CUANDO CONSIGA PODER PONER MAS DE 5 JUGADORES SIN QUE SE ROMPA EL MARCADOR
-      if(selectLocal > 5) {
-        selectLocal = 5
-      }
-      //HASTA AQUI
 
       for(let x = 0; x < selectLocal; x++) {
         let id = "jugadorLocal" + (x+1).toString()
@@ -94,30 +89,36 @@ export class DatosEquipoComponent implements OnInit {
         (<HTMLInputElement>document.getElementById(numeroJugador)).contentEditable = "true";
       }
     }
-  }
+  }*/
 
   deleteNameLocalPlayer(id: string) {
-    document.getElementById("nombreJugadorLocal"+id).innerHTML = ""
+    document.getElementById("nombreJugadorLocal"+id).innerHTML = "";
+    (<HTMLInputElement>document.getElementById("nombreJugadorLocal"+id)).contentEditable = "true";
   }
 
   deleteSurnameLocalPlayer(id: string) {
-    document.getElementById("apellidosJugadorLocal"+id).innerHTML = ""
+    document.getElementById("apellidosJugadorLocal"+id).innerHTML = "";
+    (<HTMLInputElement>document.getElementById("apellidosJugadorLocal"+id)).contentEditable = "true";
   }
 
   deleteNumberLocalPlayer(id: string) {
-    document.getElementById("numeroJugadorLocal"+id).innerHTML = ""
+    document.getElementById("numeroJugadorLocal"+id).innerHTML = "";
+    (<HTMLInputElement>document.getElementById("numeroJugadorLocal"+id)).contentEditable = "true";
   }
 
   deleteNameAwayPlayer(id: string) {
-    document.getElementById("nombreJugadorVisitante"+id).innerHTML = ""
+    document.getElementById("nombreJugadorVisitante"+id).innerHTML = "";
+    (<HTMLInputElement>document.getElementById("nombreJugadorVisitante"+id)).contentEditable = "true";
   }
 
   deleteSurnameAwayPlayer(id: string) {
-    document.getElementById("apellidosJugadorVisitante"+id).innerHTML = ""
+    document.getElementById("apellidosJugadorVisitante"+id).innerHTML = "";
+    (<HTMLInputElement>document.getElementById("apellidosJugadorVisitante"+id)).contentEditable = "true";
   }
 
   deleteNumberAwayPlayer(id: string) {
-    document.getElementById("numeroJugadorVisitante"+id).innerHTML = ""
+    document.getElementById("numeroJugadorVisitante"+id).innerHTML = "";
+    (<HTMLInputElement>document.getElementById("numeroJugadorVisitante"+id)).contentEditable = "true";
   }
 
 }

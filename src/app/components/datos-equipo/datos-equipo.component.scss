@@ -1,5 +1,5 @@
 /*.container {
-    padding-top: 5%;
+    width: 100%;
 }*/
 
 form {
@@ -19,11 +19,20 @@ form div {
     margin-right: 5%;
 }
 
-.jugadores {
+.jugadoresTitulares, .jugadores {
     float: left;
-    width: 19%;
     margin-bottom: 1%;
     margin-right: 1%;
+}
+
+.jugadores {
+    width: 12%;
+    margin-left: 1%;
+}
+
+.jugadoresTitulares {
+    width: 18%;
+    margin-left: 1%;
 }
 
 .list-group-item {
@@ -33,4 +42,34 @@ form div {
 .card-header {
     font-size: 12px;
     font-weight: bolder;
+}
+
+#localiño{
+    float: left;
+    width: 50%;
+    height: 100%;
+}
+
+#visitanteiño{
+    float: left;
+    width: 50%;
+    height: 100%;
+}
+
+#botonaso {
+    width: 100%;
+    height: 10%;
+}
+
+#10visitante{
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    width: 100%;
+    height: 10%;
+    background-color: blue;
+}
+
+#451local .jugadores {
+    width: 100%;
 }
