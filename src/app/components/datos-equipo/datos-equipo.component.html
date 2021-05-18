@@ -8,32 +8,32 @@
                 </div>
             </div>
         </div>
-        <div id="451local" style="height:40%; text-align: center;">
-            <h5>Titulares</h5>
-            <div *ngFor="let jugador of titulares;" class="jugadoresTitulares">
-                <div id="jugadorLocal{{jugador}}" class="card" style="width: 100%;">
-                    <ul class="list-group list-group-flush">
-                        <div class="card-header bg-light">Jugador</div>
-                        <li id="nombreJugadorLocal{{jugador}}" class="list-group-item" (click)="deleteNameLocalPlayer(jugador)">Nombre</li>
-                        <li id="apellidosJugadorLocal{{jugador}}" class="list-group-item" (click)="deleteSurnameLocalPlayer(jugador)">Apellidos</li>
-                        <li id="numeroJugadorLocal{{jugador}}" class="list-group-item" (click)="deleteNumberLocalPlayer(jugador)">Número</li>
-                    </ul>
-                  </div>
-              </div>
+        <table class="table" style="width: 45%;">
+            <thead>
+              <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellidos</th>
+                <th scope="col">Número</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let jugador of jugadoresLocal">
+                <td>{{partido._jugadoresLocal[jugador]._nombre}}</td>
+                <td>{{partido._jugadoresLocal[jugador]._apellidos}}</td>
+                <td>{{partido._jugadoresLocal[jugador]._numero}}</td>
+              </tr>
+            </tbody>
+          </table>
+        <div id="jugadorLocales" class="card" style="width: 45%;">
+            <ul class="list-group list-group-flush">
+                <div class="card-header bg-light">Jugador</div>
+                <li id="nombreJugadorLocal{{idJugadorLocal}}" class="list-group-item" (click)="deleteNameLocalPlayer(idJugadorLocal)" (mouseover)="checkJugadorLocal(idJugadorLocal)">Nombre</li>
+                <li id="apellidosJugadorLocal{{idJugadorLocal}}" class="list-group-item" (click)="deleteSurnameLocalPlayer(idJugadorLocal)" (mouseover)="checkJugadorLocal(idJugadorLocal)">Apellidos</li>
+                <li id="numeroJugadorLocal{{idJugadorLocal}}" class="list-group-item" (click)="deleteNumberLocalPlayer(idJugadorLocal)" (mouseover)="checkJugadorLocal(idJugadorLocal)">Número</li>
+            </ul>
+            <p style="text-align: center; padding-top: 31%;"><button id="botonAñadirLocal" type="button" class="btn btn-success" (click)="addLocalPlayer(idJugadorLocal)" [disabled]="!nombreJugadorLocal || !apellidosJugadorLocal || !numeroJugadorLocal" (mouseout)="checkJugadorLocal(idJugadorLocal)">añadir jugador local</button></p>
         </div>
-        <div id ="452local" style="height:40%; text-align: center;">
-            <h5>Suplentes</h5>
-            <div *ngFor="let jugador of suplentes;" class="jugadores">
-                <div id="jugadorLocal" class="card" style="width: 100%;">
-                    <ul class="list-group list-group-flush">
-                        <div class="card-header bg-light">Jugador</div>
-                        <li id="nombreJugadorLocal{{jugador}}" class="list-group-item" (click)="deleteNameLocalPlayer(jugador)">Nombre</li>
-                        <li id="apellidosJugadorLocal{{jugador}}" class="list-group-item" (click)="deleteSurnameLocalPlayer(jugador)">Apellidos</li>
-                        <li id="numeroJugadorLocal{{jugador}}" class="list-group-item" (click)="deleteNumberLocalPlayer(jugador)">Número</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        <p>Jugadores: {{idJugadorLocal}}/5</p>
     </div>
     
     <div id="visitanteiño">
@@ -45,34 +45,34 @@
                 </div>
             </div>
         </div>
-        <div id="451visitante" style="height:40%; text-align: center;">
-            <h5>Titulares</h5>
-            <div *ngFor="let jugador of titulares;" class="jugadoresTitulares">
-                <div id="jugadorVisitante{{jugador}}" class="card" style="width: 100%;">
-                    <ul class="list-group list-group-flush">
-                        <div class="card-header bg-light">Jugador</div>
-                        <li id="nombreJugadorVisitante{{jugador}}" class="list-group-item" (click)="deleteNameAwayPlayer(jugador)">Nombre</li>
-                        <li id="apellidosJugadorVisitante{{jugador}}" class="list-group-item" (click)="deleteSurnameAwayPlayer(jugador)">Apellidos</li>
-                        <li id="numeroJugadorVisitante{{jugador}}" class="list-group-item" (click)="deleteNumberAwayPlayer(jugador)">Número</li>
-                    </ul>
-                  </div>
-              </div>
+        <table class="table" style="width: 45%;">
+            <thead>
+              <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellidos</th>
+                <th scope="col">Número</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let jugador of jugadoresVisitante">
+                <td>{{partido._jugadoresVisitante[jugador]._nombre}}</td>
+                <td>{{partido._jugadoresVisitante[jugador]._apellidos}}</td>
+                <td>{{partido._jugadoresVisitante[jugador]._numero}}</td>
+              </tr>
+            </tbody>
+          </table>
+        <div id="jugadorVisitantes" class="card" style="width: 50%;">
+            <ul class="list-group list-group-flush">
+                <div class="card-header bg-light">Jugador</div>
+                <li id="nombreJugadorVisitante{{idJugadorVisitante}}" class="list-group-item" (click)="deleteNameAwayPlayer(idJugadorVisitante)" (mouseover)="checkJugadorVisitante(idJugadorVisitante)">Nombre</li>
+                <li id="apellidosJugadorVisitante{{idJugadorVisitante}}" class="list-group-item" (click)="deleteSurnameAwayPlayer(idJugadorVisitante)" (mouseover)="checkJugadorVisitante(idJugadorVisitante)">Apellidos</li>
+                <li id="numeroJugadorVisitante{{idJugadorVisitante}}" class="list-group-item" (click)="deleteNumberAwayPlayer(idJugadorVisitante)" (mouseover)="checkJugadorVisitante(idJugadorVisitante)">Número</li>
+            </ul>
+            <p style="text-align: center; padding-top: 31%;"><button id="boton" type="button" class="btn btn-success" (click)="addAwayPlayer(idJugadorVisitante)" [disabled]="!nombreJugadorVisitante || !apellidosJugadorVisitante || !numeroJugadorVisitante" (mouseout)="checkJugadorVisitante(idJugadorVisitante)">añadir jugador visitante</button></p>
         </div>
-        <div id ="452visitante" style="height:40%; text-align: center;">
-            <h5>Suplentes</h5>
-            <div *ngFor="let jugador of suplentes;" class="jugadores">
-                <div id="jugadorVisitantes" class="card" style="width: 100%;">
-                    <ul class="list-group list-group-flush">
-                        <div class="card-header bg-light">Jugador</div>
-                        <li id="nombreJugadorVisitante{{jugador}}" class="list-group-item" (click)="deleteNameAwayPlayer(jugador)">Nombre</li>
-                        <li id="apellidosJugadorVisitante{{jugador}}" class="list-group-item" (click)="deleteSurnameAwayPlayer(jugador)">Apellidos</li>
-                        <li id="numeroJugadorVisitante{{jugador}}" class="list-group-item" (click)="deleteNumberAwayPlayer(jugador)">Número</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        <p>Jugadores: {{idJugadorVisitante}}/5</p>
     </div>
-    <p style="text-align: center; padding-top: 31%;"><button id="boton" type="button" class="btn btn-primary" [disabled]="!equipoLocal || !equipoVisitante" (click)="setMatch()">Rellenar datos de los equipos</button></p>
+    <p style="text-align: center; padding-top: 31%;"><button id="boton" type="button" class="btn btn-primary" [disabled]="!equipoLocal || !equipoVisitante || !minimoJugadoresLocal || !minimoJugadoresVisitante" (click)="setMatch()">Rellenar datos de los equipos</button></p>
 </body>
 
 
