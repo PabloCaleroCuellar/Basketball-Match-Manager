@@ -78,3 +78,14 @@ table {
     float:left;
     margin-right: 5%;
 }
+
+.my-custom-scrollbar {
+    float:left;
+    height: 100%;
+    overflow: auto;
+
+}
+
+.table-wrapper-scroll-y {
+    display: block;
+}

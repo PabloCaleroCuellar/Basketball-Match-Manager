@@ -4,11 +4,12 @@
             <div class="form-group row">
                 <label for="nombreEquipoLocal" class="col-sm-2 col-form-label" style="font-weight: bolder;">Locales:</label>
                 <div class="col-sm-9">
-                    <input type="text" name="nombreEquipoLocal" class="form-control" id="nombreEquipoLocal" placeholder="{{partido._equipoLocal}}" [(ngModel)]="equipoLocal" [disabled]="partido._cuarto">
+                    <input type="text" name="nombreEquipoLocal" class="form-control" id="nombreEquipoLocal" placeholder="{{partido._equipoLocal}}" [(ngModel)]="equipoLocal" [disabled]="partido._cuarto" (mouseout)="fillNameLocalTeam()">
                 </div>
             </div>
         </div>
-        <table class="table" style="width: 45%;">
+        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+          <table class="table" style="width: 45%;">
             <thead>
               <tr>
                 <th scope="col">Nombre</th>
@@ -24,6 +25,8 @@
               </tr>
             </tbody>
           </table>
+        </div>
+        
         <div id="jugadorLocales" class="card" style="width: 45%;">
             <ul class="list-group list-group-flush">
                 <div class="card-header bg-light">Jugador</div>
@@ -41,11 +44,12 @@
             <div class="form-group row">
                 <label for="nombreEquipoVisitante" class="col-sm-2 col-form-label" style="font-weight: bolder;">Visitantes:</label>
                 <div class="col-sm-9">
-                    <input type="text" name="nombreEquipoVisitante" class="form-control" id="nombreEquipoVisitante" placeholder="{{partido._equipoVisitante}}" [(ngModel)]="equipoVisitante" [disabled]="partido._cuarto">
+                    <input type="text" name="nombreEquipoVisitante" class="form-control" id="nombreEquipoVisitante" placeholder="{{partido._equipoVisitante}}" value="{{partido._equipoVisitante}}" [(ngModel)]="equipoVisitante" [disabled]="partido._cuarto" (mouseout)="fillNameAwayTeam()">
                 </div>
             </div>
         </div>
-        <table class="table" style="width: 45%;">
+        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+          <table class="table" style="width: 45%;">
             <thead>
               <tr>
                 <th scope="col">Nombre</th>
@@ -61,6 +65,7 @@
               </tr>
             </tbody>
           </table>
+        </div>
         <div id="jugadorVisitantes" class="card" style="width: 50%;">
             <ul class="list-group list-group-flush">
                 <div class="card-header bg-light">Jugador</div>
@@ -72,7 +77,7 @@
         </div>
         <p>Jugadores: {{idJugadorVisitante}}/5</p>
     </div>
-    <p style="text-align: center; padding-top: 31%;"><button id="boton" type="button" class="btn btn-primary" [disabled]="!equipoLocal || !equipoVisitante || !minimoJugadoresLocal || !minimoJugadoresVisitante" (click)="setMatch()">Rellenar datos de los equipos</button></p>
+    <p style="text-align: center; padding-top: 31%;"><button id="boton" type="button" class="btn btn-primary" [disabled]="!equipoLocal || !equipoVisitante || !minimoJugadoresLocal || !minimoJugadoresVisitante || !todosDatosOk || partidoEmpezado" (click)="setMatch()">Rellenar datos de los equipos</button></p>
 </body>
 
 

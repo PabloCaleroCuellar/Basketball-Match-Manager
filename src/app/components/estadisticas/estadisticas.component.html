@@ -5,24 +5,26 @@
         <h2>{{partido._equipoLocal.toUpperCase()}}</h2>
       </div>
     </div>
-    <table class="table" style="width: 45%">
-      <thead>
-        <tr>
-          <th scope="col">Nombre</th>
-          <th scope="col">Apellidos</th>
-          <th scope="col">Número</th>
-          <th scope="col">Minutos</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let jugador of jugadoresLocal">
-          <td>{{partido._jugadoresLocal[jugador]._nombre}}</td>
-          <td>{{partido._jugadoresLocal[jugador]._apellidos}}</td>
-          <td>{{partido._jugadoresLocal[jugador]._numero}}</td>
-          <td>{{partido._jugadoresLocal[jugador]._minutos}}:{{partido._jugadoresVisitante[jugador]._segundos}}</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+      <table class="table" style="width: 45%">
+        <thead>
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Número</th>
+            <th scope="col">Minutos</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let jugador of jugadoresLocal">
+            <td>{{partido._jugadoresLocal[jugador]._nombre}}</td>
+            <td>{{partido._jugadoresLocal[jugador]._apellidos}}</td>
+            <td>{{partido._jugadoresLocal[jugador]._numero}}</td>
+            <td>{{partido._jugadoresLocal[jugador]._minutos}}:{{partido._jugadoresVisitante[jugador]._segundos}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
     
   <div id="visitante">
@@ -31,23 +33,25 @@
         <h2>{{partido._equipoVisitante.toUpperCase()}}</h2>
       </div>
     </div>
-    <table class="table" style="width: 45%;">
-      <thead>
-        <tr>
-          <th scope="col">Nombre</th>
-          <th scope="col">Apellidos</th>
-          <th scope="col">Número</th>
-          <th scope="col">Minutos</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let jugador of jugadoresVisitante">
-          <td>{{partido._jugadoresVisitante[jugador]._nombre}}</td>
-          <td>{{partido._jugadoresVisitante[jugador]._apellidos}}</td>
-          <td>{{partido._jugadoresVisitante[jugador]._numero}}</td>
-          <td>{{partido._jugadoresVisitante[jugador]._minutos}}:{{partido._jugadoresVisitante[jugador]._segundos}}</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+      <table class="table" style="width: 45%;">
+        <thead>
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Número</th>
+            <th scope="col">Minutos</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let jugador of jugadoresVisitante">
+            <td>{{partido._jugadoresVisitante[jugador]._nombre}}</td>
+            <td>{{partido._jugadoresVisitante[jugador]._apellidos}}</td>
+            <td>{{partido._jugadoresVisitante[jugador]._numero}}</td>
+            <td>{{partido._jugadoresVisitante[jugador]._minutos}}:{{partido._jugadoresVisitante[jugador]._segundos}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </body>

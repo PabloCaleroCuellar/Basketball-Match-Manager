@@ -23,10 +23,14 @@ export class DatosEquipoComponent implements OnInit {
   nombreJugadorVisitante: boolean = false
   apellidosJugadorVisitante: boolean = false
   numeroJugadorVisitante: boolean = false
-  minimoJugadoresLocal:boolean = false
-  minimoJugadoresVisitante:boolean = false
-  jugadoresLocalPartido:Jugador[] = new Array
-  jugadoresVisitantePartido:Jugador[] = new Array
+  minimoJugadoresLocal :boolean = false
+  minimoJugadoresVisitante: boolean = false
+  jugadoresLocalPartido: Jugador[] = new Array
+  jugadoresVisitantePartido: Jugador[] = new Array
+  partidoEmpezado: boolean = false
+  equipoLocal: string
+  equipoVisitante: string
+  todosDatosOk: boolean = false
 
   constructor(private data: DataService, private router: Router) { }
 
@@ -36,6 +40,7 @@ export class DatosEquipoComponent implements OnInit {
       (<HTMLInputElement>document.getElementById("nombreEquipoLocal")).disabled;
       (<HTMLInputElement>document.getElementById("nombreEquipoVisitante")).disabled;
       document.getElementById("boton").style.display = "none"
+      this.partidoEmpezado = true
     }
     if(this.partido._jugadoresLocal.length > 0) {
       for(let i = 0; i < this.partido._jugadoresLocal.length; i++) {
@@ -47,6 +52,20 @@ export class DatosEquipoComponent implements OnInit {
         this.jugadoresVisitante.push(i)
       }
     }
+    this.idJugadorLocal = this.jugadoresLocal.length
+    this.idJugadorVisitante = this.jugadoresVisitante.length
+    if(this.jugadoresLocal.length >= 5) {
+      this.minimoJugadoresLocal = true
+    }
+    if(this.jugadoresVisitante.length >= 5) {
+      this.minimoJugadoresVisitante = true
+    }
+    this.equipoLocal = this.partido._equipoLocal
+    this.equipoVisitante = this.partido._equipoVisitante
+    if(this.partido._jugadoresLocal.length >= 5 && this.partido._jugadoresVisitante.length >= 5
+      && this.partido._equipoLocal != "" && this.partido._equipoVisitante != "") {
+        this.todosDatosOk = true
+      }
   }
 
   setMatch() {
@@ -59,9 +78,6 @@ export class DatosEquipoComponent implements OnInit {
     this.partido._tiemposVisitante = 6;
     this.partido._minutos = 10;
     this.partido._segundos = 0;
-    this.partido._jugadoresLocal = this.jugadoresLocalPartido
-    this.partido._jugadoresVisitante = this.jugadoresVisitantePartido
-    console.log(this.partido._jugadoresVisitante)
     this.router.navigateByUrl('/partido');
   }
 
@@ -163,6 +179,10 @@ export class DatosEquipoComponent implements OnInit {
     if(this.idJugadorLocal >= 5) {
       this.minimoJugadoresLocal = true
     }
+    if(this.partido._jugadoresLocal.length >= 5 && this.partido._jugadoresVisitante.length >= 5
+      && this.partido._equipoLocal != "" && this.partido._equipoVisitante != "") {
+        this.todosDatosOk = true
+      }
   }
 
   addAwayPlayer(id: string) {
@@ -181,6 +201,10 @@ export class DatosEquipoComponent implements OnInit {
     if(this.idJugadorVisitante >= 5) {
       this.minimoJugadoresVisitante = true
     }
+    if(this.partido._jugadoresLocal.length >= 5 && this.partido._jugadoresVisitante.length >= 5
+      && this.partido._equipoLocal != "" && this.partido._equipoVisitante != "") {
+        this.todosDatosOk = true
+      }
   }
 
   checkJugadorLocal(id: string) {
@@ -227,5 +251,25 @@ export class DatosEquipoComponent implements OnInit {
         this.numeroJugadorVisitante = false
       }
     }
+  }
+
+  fillNameLocalTeam() {
+    if((<HTMLInputElement>document.getElementById("nombreEquipoLocal")).value != "") {
+      this.partido._equipoLocal = (<HTMLInputElement>document.getElementById("nombreEquipoLocal")).value
+    }
+    if(this.partido._jugadoresLocal.length >= 5 && this.partido._jugadoresVisitante.length >= 5
+      && this.partido._equipoLocal != "" && this.partido._equipoVisitante != "") {
+        this.todosDatosOk = true
+      }
+  }
+
+  fillNameAwayTeam() {
+    if((<HTMLInputElement>document.getElementById("nombreEquipoVisitante")).value != "") {
+      this.partido._equipoVisitante = (<HTMLInputElement>document.getElementById("nombreEquipoVisitante")).value
+    }
+    if(this.partido._jugadoresLocal.length >= 5 && this.partido._jugadoresVisitante.length >= 5
+      && this.partido._equipoLocal != "" && this.partido._equipoVisitante != "") {
+        this.todosDatosOk = true
+      }
   }
 }
