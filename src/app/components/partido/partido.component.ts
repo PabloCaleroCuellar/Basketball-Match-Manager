@@ -64,10 +64,38 @@ export class PartidoComponent implements OnInit {
 
   basketLocal(value: number) {
     this.partido._puntosLocal += value
+    for(let i = 0; i < this.partido._jugadoresLocal.length; i++) {
+      this.partido._jugadoresLocal[i]._segundos = ((this.partido._cuarto * 60 * 10) - (this.partido._minutos*60 + this.partido._segundos))
+      if(this.partido._jugadoresLocal[i]._segundos > 59) {
+        let auxSegundosMinutos = Math.floor(this.partido._jugadoresLocal[i]._segundos / 60);
+        this.partido._jugadoresLocal[i]._minutos = auxSegundosMinutos;
+        this.partido._jugadoresLocal[i]._segundos = this.partido._jugadoresLocal[i]._segundos - auxSegundosMinutos*60;
+      }
+      this.partido._jugadoresVisitante[i]._segundos = ((this.partido._cuarto * 60 * 10) - (this.partido._minutos*60 + this.partido._segundos))
+      if(this.partido._jugadoresVisitante[i]._segundos > 59) {
+        let auxSegundosMinutos = Math.floor(this.partido._jugadoresVisitante[i]._segundos / 60);
+        this.partido._jugadoresVisitante[i]._minutos = auxSegundosMinutos;
+        this.partido._jugadoresVisitante[i]._segundos = this.partido._jugadoresVisitante[i]._segundos - auxSegundosMinutos*60;
+      }
+    }
   }
 
   basketVisitante(value: number) {
     this.partido._puntosVisitante += value
+    for(let i = 0; i < this.partido._jugadoresVisitante.length; i++) {
+      this.partido._jugadoresLocal[i]._segundos = ((this.partido._cuarto * 60 * 10) - (this.partido._minutos*60 + this.partido._segundos))
+      if(this.partido._jugadoresLocal[i]._segundos > 59) {
+        let auxSegundosMinutos = Math.floor(this.partido._jugadoresLocal[i]._segundos / 60);
+        this.partido._jugadoresLocal[i]._minutos = auxSegundosMinutos;
+        this.partido._jugadoresLocal[i]._segundos = this.partido._jugadoresLocal[i]._segundos - auxSegundosMinutos*60;
+      }
+      this.partido._jugadoresVisitante[i]._segundos = ((this.partido._cuarto * 60 * 10) - (this.partido._minutos*60 + this.partido._segundos))
+      if(this.partido._jugadoresVisitante[i]._segundos > 59) {
+        let auxSegundosMinutos = Math.floor(this.partido._jugadoresVisitante[i]._segundos / 60);
+        this.partido._jugadoresVisitante[i]._minutos = auxSegundosMinutos;
+        this.partido._jugadoresVisitante[i]._segundos = this.partido._jugadoresVisitante[i]._segundos - auxSegundosMinutos*60;
+      }
+    }
   }
 
   faltaLocal() {

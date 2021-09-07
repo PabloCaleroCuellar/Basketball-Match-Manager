@@ -1,3 +1,53 @@
-<p>
-    Componente donde estarán las estadísticas de los jugadores durante el partido
-</p>
+<body>
+  <div id="local" style="border-right: 1px solid black; border-right-style: dashed;">
+    <div id="10local" style="height:10%;">
+      <div class="form-group row" style="margin-left: 5%">
+        <h2>{{partido._equipoLocal.toUpperCase()}}</h2>
+      </div>
+    </div>
+    <table class="table" style="width: 45%">
+      <thead>
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Apellidos</th>
+          <th scope="col">Número</th>
+          <th scope="col">Minutos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let jugador of jugadoresLocal">
+          <td>{{partido._jugadoresLocal[jugador]._nombre}}</td>
+          <td>{{partido._jugadoresLocal[jugador]._apellidos}}</td>
+          <td>{{partido._jugadoresLocal[jugador]._numero}}</td>
+          <td>{{partido._jugadoresLocal[jugador]._minutos}}:{{partido._jugadoresVisitante[jugador]._segundos}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+    
+  <div id="visitante">
+    <div id="10visitante" style="height:10%;">
+      <div class="form-group row" style="margin-left: 5%">
+        <h2>{{partido._equipoVisitante.toUpperCase()}}</h2>
+      </div>
+    </div>
+    <table class="table" style="width: 45%;">
+      <thead>
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Apellidos</th>
+          <th scope="col">Número</th>
+          <th scope="col">Minutos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let jugador of jugadoresVisitante">
+          <td>{{partido._jugadoresVisitante[jugador]._nombre}}</td>
+          <td>{{partido._jugadoresVisitante[jugador]._apellidos}}</td>
+          <td>{{partido._jugadoresVisitante[jugador]._numero}}</td>
+          <td>{{partido._jugadoresVisitante[jugador]._minutos}}:{{partido._jugadoresVisitante[jugador]._segundos}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
