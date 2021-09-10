@@ -5,7 +5,7 @@
         <h2>{{partido._equipoLocal.toUpperCase()}}</h2>
       </div>
     </div>
-    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+    <div class="table-wrapper-scroll-y my-custom-scrollbar dtHorizontal">
       <table class="table" style="width: 45%">
         <thead>
           <tr>
@@ -13,6 +13,13 @@
             <th scope="col">Apellidos</th>
             <th scope="col">Número</th>
             <th scope="col">Minutos</th>
+            <th scope="col">Puntos</th>
+            <th scope="col">Rebotes</th>
+            <th scope="col">Asistencias</th>
+            <th scope="col">Robos</th>
+            <th scope="col">Tapones</th>
+            <th scope="col">Pérdidas</th>
+            <th scope="col">Faltas</th>
           </tr>
         </thead>
         <tbody>
@@ -21,6 +28,13 @@
             <td>{{partido._jugadoresLocal[jugador]._apellidos}}</td>
             <td>{{partido._jugadoresLocal[jugador]._numero}}</td>
             <td>{{partido._jugadoresLocal[jugador]._minutos}}:{{partido._jugadoresLocal[jugador]._segundos}}</td>
+            <td>{{partido._jugadoresLocal[jugador]._puntos}}</td>
+            <td>{{partido._jugadoresLocal[jugador]._rebotes}}</td>
+            <td>{{partido._jugadoresLocal[jugador]._asistencias}}</td>
+            <td>{{partido._jugadoresLocal[jugador]._robos}}</td>
+            <td>{{partido._jugadoresLocal[jugador]._tapones}}</td>
+            <td>{{partido._jugadoresLocal[jugador]._perdidas}}</td>
+            <td>{{partido._jugadoresLocal[jugador]._faltas}}</td>
           </tr>
         </tbody>
       </table>
@@ -33,7 +47,7 @@
         <h2>{{partido._equipoVisitante.toUpperCase()}}</h2>
       </div>
     </div>
-    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+    <div class="table-wrapper-scroll-y my-custom-scrollbar dtHorizontal">
       <table class="table" style="width: 45%;">
         <thead>
           <tr>
@@ -41,6 +55,13 @@
             <th scope="col">Apellidos</th>
             <th scope="col">Número</th>
             <th scope="col">Minutos</th>
+            <th scope="col">Puntos</th>
+            <th scope="col">Rebotes</th>
+            <th scope="col">Asistencias</th>
+            <th scope="col">Robos</th>
+            <th scope="col">Tapones</th>
+            <th scope="col">Pérdidas</th>
+            <th scope="col">Faltas</th>
           </tr>
         </thead>
         <tbody>
@@ -49,6 +70,13 @@
             <td>{{partido._jugadoresVisitante[jugador]._apellidos}}</td>
             <td>{{partido._jugadoresVisitante[jugador]._numero}}</td>
             <td>{{partido._jugadoresVisitante[jugador]._minutos}}:{{partido._jugadoresVisitante[jugador]._segundos}}</td>
+            <td>{{partido._jugadoresVisitante[jugador]._puntos}}</td>
+            <td>{{partido._jugadoresVisitante[jugador]._rebotes}}</td>
+            <td>{{partido._jugadoresVisitante[jugador]._asistencias}}</td>
+            <td>{{partido._jugadoresVisitante[jugador]._robos}}</td>
+            <td>{{partido._jugadoresVisitante[jugador]._tapones}}</td>
+            <td>{{partido._jugadoresVisitante[jugador]._perdidas}}</td>
+            <td>{{partido._jugadoresVisitante[jugador]._faltas}}</td>
           </tr>
         </tbody>
       </table>

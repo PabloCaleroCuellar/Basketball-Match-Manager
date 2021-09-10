@@ -7,8 +7,13 @@
             <p><button type="button" class="btn btn-success" (click)="basketLocal(2)">+2</button></p>
             <p><button type="button" class="btn btn-success" (click)="basketLocal(3)">+3</button></p>
         </div>
-        <div id="falta">
-            <p><button type="button" class="btn btn-danger" (click)="faltaLocal()">FALTA</button></p>
+        <div id="accionesJugador">
+            <p><button type="button" class="btn btn-primary" (click)="accionJugadorLocal('rebote')">REBOTE</button></p>
+            <p><button type="button" class="btn btn-success" (click)="accionJugadorLocal('asistencia')">ASISTENCIA</button></p>
+            <p><button type="button" class="btn btn-light" (click)="accionJugadorLocal('robo')">ROBO</button></p>
+            <p><button type="button" class="btn btn-warning" (click)="accionJugadorLocal('tapon')">TAPÓN</button></p>
+            <p><button type="button" class="btn btn-secondary" (click)="accionJugadorLocal('perdida')">PÉRDIDA</button></p>
+            <p><button type="button" class="btn btn-danger" (click)="accionJugadorLocal('falta')">FALTA</button></p>
         </div>
         <div id="tiempos">
             <p>
@@ -26,8 +31,13 @@
             <p><button type="button" class="btn btn-success" (click)="basketVisitante(2)">+2</button></p>
             <p><button type="button" class="btn btn-success" (click)="basketVisitante(3)">+3</button></p>
         </div>
-        <div id="falta">
-            <p><button type="button" class="btn btn-danger" (click)="faltaVisitante()">FALTA</button></p>
+        <div id="accionesJugador">
+            <p><button type="button" class="btn btn-primary" (click)="accionJugadorVisitante('rebote')">REBOTE</button></p>
+            <p><button type="button" class="btn btn-success" (click)="accionJugadorVisitante('asistencia')">ASISTENCIA</button></p>
+            <p><button type="button" class="btn btn-light" (click)="accionJugadorVisitante('robo')">ROBO</button></p>
+            <p><button type="button" class="btn btn-warning" (click)="accionJugadorVisitante('tapon')">TAPÓN</button></p>
+            <p><button type="button" class="btn btn-secondary" (click)="accionJugadorVisitante('perdida')">PÉRDIDA</button></p>
+            <p><button type="button" class="btn btn-danger" (click)="accionJugadorVisitante('falta')">FALTA</button></p>
         </div>
         <div id="tiempos">
             <p>

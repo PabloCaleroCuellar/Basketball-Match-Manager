@@ -166,7 +166,8 @@ export class DatosEquipoComponent implements OnInit {
   addLocalPlayer(id: string) {
     let player: Jugador = new Jugador(document.getElementById("nombreJugadorLocal"+id).innerText, 
                                       document.getElementById("apellidosJugadorLocal"+id).innerText,
-                                      document.getElementById("numeroJugadorLocal"+id).innerText, 0, 0)
+                                      document.getElementById("numeroJugadorLocal"+id).innerText, 0, 0,
+                                      0, 0, 0, 0, 0, 0, 0)
     this.partido._jugadoresLocal.push(player)
     this.jugadoresLocalPartido.push(player)
 
@@ -188,7 +189,8 @@ export class DatosEquipoComponent implements OnInit {
   addAwayPlayer(id: string) {
     let player: Jugador = new Jugador(document.getElementById("nombreJugadorVisitante"+id).innerText, 
                                       document.getElementById("apellidosJugadorVisitante"+id).innerText,
-                                      document.getElementById("numeroJugadorVisitante"+id).innerText, 0, 0)
+                                      document.getElementById("numeroJugadorVisitante"+id).innerText, 0, 0,
+                                      0, 0, 0, 0, 0, 0, 0)
     this.partido._jugadoresVisitante.push(player)
     this.jugadoresVisitantePartido.push(player)
 

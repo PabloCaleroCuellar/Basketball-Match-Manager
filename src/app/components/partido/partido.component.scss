@@ -28,11 +28,18 @@ p, h3 {
     margin: 0 auto;
 }
 
-#falta, #tiempos {
+#accionesJugador, #tiempos {
     padding-top: 2%;
-    padding-right: 40%;
     display: table;
     margin: 0 auto;
+}
+
+#accionesJugador p {
+    margin-right: 2%;
+}
+
+#tiempos {
+    padding-right: 40%;
 }
 
 #faltas {

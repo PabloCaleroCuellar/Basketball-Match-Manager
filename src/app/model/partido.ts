@@ -14,10 +14,23 @@ export class Partido {
     _tiemposVisitante: number;
     _jugadoresLocal: Jugador[];
     _jugadoresVisitante: Jugador[];
+    _rebotesLocal: number;
+    _rebotesVisitante: number;
+    _asistenciasLocal: number;
+    _asistenciasVisitante: number;
+    _robosLocal: number;
+    _robosVisitante: number;
+    _taponesLocal: number;
+    _taponesVisitante: number;
+    _perdidasLocal: number;
+    _perdidasVisitante: number;
 
     constructor(equipoLocal: string, equipoVisitante: string, cuarto: number, minutos: number, segundos: number, 
         puntosLocal: number, puntosVisitante: number, faltasLocal: number, faltasVisitante: number, 
-        tiemposLocal: number, tiemposVisitante: number, jugadoresLocal: Jugador[], jugadoresVisitante: Jugador[]) {
+        tiemposLocal: number, tiemposVisitante: number, jugadoresLocal: Jugador[], jugadoresVisitante: Jugador[],
+        rebotesLocal: number, asistenciasLocal: number, robosLocal: number, taponesLocal: number, perdidasLocal: number,
+        rebotesVisitante: number, asistenciasVisitante: number, robosVisitante: number, taponesVisitante: number, 
+        perdidasVisitante: number) {
         this._equipoLocal = equipoLocal;
         this._equipoVisitante = equipoVisitante;
         this._cuarto = cuarto;
@@ -31,6 +44,16 @@ export class Partido {
         this._tiemposVisitante = tiemposVisitante;
         this._jugadoresLocal = jugadoresLocal
         this._jugadoresVisitante = jugadoresVisitante
+        this._rebotesLocal = rebotesLocal
+        this._asistenciasLocal = asistenciasLocal
+        this._robosLocal = robosLocal
+        this._taponesLocal = taponesLocal
+        this._perdidasLocal = perdidasLocal
+        this._rebotesVisitante = rebotesVisitante
+        this._asistenciasVisitante = asistenciasVisitante
+        this._robosVisitante = robosVisitante
+        this._taponesVisitante = taponesVisitante
+        this._perdidasVisitante = perdidasVisitante
       }
 }
 
