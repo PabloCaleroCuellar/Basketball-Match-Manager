@@ -17,6 +17,8 @@ let partidoEmpezado: boolean = false;
 export class PartidoComponent implements OnInit {
 
   partido: Partido
+  jugadoresLocal:number[] = new Array;
+  jugadoresVisitante:number[] = new Array;
 
   constructor(private data: DataService) { }
 
@@ -60,80 +62,56 @@ export class PartidoComponent implements OnInit {
         botonTimer.innerHTML = "Parar tiempo";
       }
     }
-  }
-
-  basketLocal(value: number) {
-    this.partido._puntosLocal += value
     for(let i = 0; i < this.partido._jugadoresLocal.length; i++) {
-      this.partido._jugadoresLocal[i]._puntos += value;
+      this.jugadoresLocal.push(i);
     }
-    this.añadirMinutosAJugadores()
-  }
-
-  basketVisitante(value: number) {
-    this.partido._puntosVisitante += value
     for(let i = 0; i < this.partido._jugadoresVisitante.length; i++) {
-      this.partido._jugadoresVisitante[i]._puntos += value;
+      this.jugadoresVisitante.push(i);
     }
-    this.añadirMinutosAJugadores()
   }
 
-  accionJugadorLocal(accion: string) {
+  accionJugadorLocal(accion: string, idJugador: number, puntos: number) {
     switch(accion) {
+      case "canasta":
+        this.partido._puntosLocal += puntos
+        this.partido._jugadoresLocal[idJugador]._puntos += puntos;
+        this.añadirMinutosAJugadores()
+        break;
       case "falta":
+        this.partido._faltasLocal++;
         if(!isTimerOn) {
-          this.partido._faltasLocal++;
         }
         else {
-          this.partido._faltasLocal++;
           clearInterval(interval);
           isTimerOn = false;
           this.Interval()
         }
-        for(let i = 0; i < this.partido._jugadoresLocal.length; i++) {
-          this.partido._jugadoresLocal[i]._faltas++;
-        }
-        this.partido._faltasLocal++;
+        this.partido._jugadoresLocal[idJugador]._faltas++;
         this.añadirMinutosAJugadores()
         break;
       case "rebote":
         this.partido._rebotesLocal++;
-        for(let i = 0; i < this.partido._jugadoresLocal.length; i++) {
-          this.partido._jugadoresLocal[i]._rebotes++;
-        }
-        this.partido._rebotesLocal++;
+        this.partido._jugadoresLocal[idJugador]._rebotes++;
         this.añadirMinutosAJugadores()
         break;
       case "asistencia":
         this.partido._asistenciasLocal++;
-        for(let i = 0; i < this.partido._jugadoresLocal.length; i++) {
-          this.partido._jugadoresLocal[i]._asistencias++;
-        }
-        this.partido._asistenciasLocal++;
+        this.partido._jugadoresLocal[idJugador]._asistencias++;
         this.añadirMinutosAJugadores()
         break;
       case "robo":
         this.partido._robosLocal++;
-        for(let i = 0; i < this.partido._jugadoresLocal.length; i++) {
-          this.partido._jugadoresLocal[i]._robos++;
-        }
-        this.partido._robosLocal++;
+        this.partido._jugadoresLocal[idJugador]._robos++;
         this.añadirMinutosAJugadores()
         break;
       case "tapon":
         this.partido._taponesLocal++;
-        for(let i = 0; i < this.partido._jugadoresLocal.length; i++) {
-          this.partido._jugadoresLocal[i]._tapones++;
-        }
-        this.partido._taponesLocal++;
+        this.partido._jugadoresLocal[idJugador]._tapones++;
         this.añadirMinutosAJugadores()
         break;
       case "perdida":
         this.partido._perdidasLocal++;
-        for(let i = 0; i < this.partido._jugadoresLocal.length; i++) {
-          this.partido._jugadoresLocal[i]._perdidas++;
-        }
-        this.partido._perdidasLocal++;
+        this.partido._jugadoresLocal[idJugador]._perdidas++;
         this.añadirMinutosAJugadores()
         break;
       default: 
@@ -142,62 +120,48 @@ export class PartidoComponent implements OnInit {
       }
     }
 
-  accionJugadorVisitante(accion: string) {
+  accionJugadorVisitante(accion: string, idJugador: number, puntos: number) {
     switch(accion) {
+      case "canasta":
+        this.partido._puntosVisitante += puntos
+        this.partido._jugadoresVisitante[idJugador]._puntos += puntos;
+        this.añadirMinutosAJugadores()
+        break;
       case "falta":
+        this.partido._faltasVisitante++;
         if(!isTimerOn) {
-          this.partido._faltasVisitante++;
         }
         else {
-          this.partido._faltasVisitante++;
           clearInterval(interval);
           isTimerOn = false;
           this.Interval()
         }
-        for(let i = 0; i < this.partido._jugadoresVisitante.length; i++) {
-          this.partido._jugadoresVisitante[i]._faltas++;
-        }
-        this.partido._faltasVisitante++;
+        this.partido._jugadoresVisitante[idJugador]._faltas++;
         this.añadirMinutosAJugadores()
         break;
       case "rebote":
         this.partido._rebotesVisitante++;
-        for(let i = 0; i < this.partido._jugadoresVisitante.length; i++) {
-          this.partido._jugadoresVisitante[i]._rebotes++;
-        }
-        this.partido._rebotesVisitante++;
+        this.partido._jugadoresVisitante[idJugador]._rebotes++;
         this.añadirMinutosAJugadores()
         break;
       case "asistencia":
         this.partido._asistenciasVisitante++;
-        for(let i = 0; i < this.partido._jugadoresVisitante.length; i++) {
-          this.partido._jugadoresVisitante[i]._asistencias++;
-        }
-        this.partido._asistenciasVisitante++;
+        this.partido._jugadoresVisitante[idJugador]._asistencias++;
         this.añadirMinutosAJugadores()
         break;
       case "robo":
         this.partido._robosVisitante++;
-        for(let i = 0; i < this.partido._jugadoresVisitante.length; i++) {
-          this.partido._jugadoresVisitante[i]._robos++;
-        }
-        this.partido._robosVisitante++;
+        this.partido._jugadoresVisitante[idJugador]._robos++;
         this.añadirMinutosAJugadores()
         break;
       case "tapon":
         this.partido._taponesVisitante++;
-        for(let i = 0; i < this.partido._jugadoresVisitante.length; i++) {
-          this.partido._jugadoresVisitante[i]._tapones++;
-        }
-        this.partido._taponesVisitante++;
+        this.partido._jugadoresVisitante[idJugador]._tapones++;
         this.añadirMinutosAJugadores()
         break;
       case "perdida":
         this.partido._perdidasVisitante++;
-        for(let i = 0; i < this.partido._jugadoresVisitante.length; i++) {
-          this.partido._jugadoresVisitante[i]._perdidas++;
-        }
-        this.partido._perdidasVisitante++;
+        this.partido._jugadoresVisitante[idJugador]._perdidas++;
         this.añadirMinutosAJugadores()
         break;
       default: 

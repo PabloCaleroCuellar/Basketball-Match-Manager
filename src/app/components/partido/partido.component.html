@@ -1,19 +1,17 @@
 <body>
     <div id="partido-local">
         <h2>acciones del {{partido._equipoLocal.toUpperCase()}}</h2>
-        <div id="canasta">
-            <h3>CANASTA</h3>
-            <p><button type="button" class="btn btn-success" (click)="basketLocal(1)">+1</button></p>
-            <p><button type="button" class="btn btn-success" (click)="basketLocal(2)">+2</button></p>
-            <p><button type="button" class="btn btn-success" (click)="basketLocal(3)">+3</button></p>
-        </div>
-        <div id="accionesJugador">
-            <p><button type="button" class="btn btn-primary" (click)="accionJugadorLocal('rebote')">REBOTE</button></p>
-            <p><button type="button" class="btn btn-success" (click)="accionJugadorLocal('asistencia')">ASISTENCIA</button></p>
-            <p><button type="button" class="btn btn-light" (click)="accionJugadorLocal('robo')">ROBO</button></p>
-            <p><button type="button" class="btn btn-warning" (click)="accionJugadorLocal('tapon')">TAPÓN</button></p>
-            <p><button type="button" class="btn btn-secondary" (click)="accionJugadorLocal('perdida')">PÉRDIDA</button></p>
-            <p><button type="button" class="btn btn-danger" (click)="accionJugadorLocal('falta')">FALTA</button></p>
+        <div *ngFor="let jugador of jugadoresLocal" id="accionesJugador">
+            <p>{{partido._jugadoresLocal[jugador]._nombre}} {{partido._jugadoresLocal[jugador]._apellidos}}</p>
+            <p><button type="button" class="btn btn-success" (click)="accionJugadorLocal('canasta', jugador, 1)">+1</button></p>
+            <p><button type="button" class="btn btn-success" (click)="accionJugadorLocal('canasta', jugador, 2)">+2</button></p>
+            <p><button type="button" class="btn btn-success" (click)="accionJugadorLocal('canasta', jugador, 3)">+3</button></p>
+            <p><button type="button" class="btn btn-primary" (click)="accionJugadorLocal('rebote', jugador)">REBOTE</button></p>
+            <p><button type="button" class="btn btn-success" (click)="accionJugadorLocal('asistencia', jugador)">ASIST.</button></p>
+            <p><button type="button" class="btn btn-light" (click)="accionJugadorLocal('robo', jugador)">ROBO</button></p>
+            <p><button type="button" class="btn btn-warning" (click)="accionJugadorLocal('tapon', jugador)">TAPÓN</button></p>
+            <p><button type="button" class="btn btn-secondary" (click)="accionJugadorLocal('perdida', jugador)">PÉRDIDA</button></p>
+            <p><button type="button" class="btn btn-danger" (click)="accionJugadorLocal('falta', jugador)">FALTA</button></p>
         </div>
         <div id="tiempos">
             <p>
@@ -25,19 +23,17 @@
     </div>
     <div id="partido-visitante">
         <h2>acciones del {{partido._equipoVisitante.toUpperCase()}}</h2>
-        <div id="canasta">
-            <h3>CANASTA</h3>
-            <p><button type="button" class="btn btn-success" (click)="basketVisitante(1)">+1</button></p>
-            <p><button type="button" class="btn btn-success" (click)="basketVisitante(2)">+2</button></p>
-            <p><button type="button" class="btn btn-success" (click)="basketVisitante(3)">+3</button></p>
-        </div>
-        <div id="accionesJugador">
-            <p><button type="button" class="btn btn-primary" (click)="accionJugadorVisitante('rebote')">REBOTE</button></p>
-            <p><button type="button" class="btn btn-success" (click)="accionJugadorVisitante('asistencia')">ASISTENCIA</button></p>
-            <p><button type="button" class="btn btn-light" (click)="accionJugadorVisitante('robo')">ROBO</button></p>
-            <p><button type="button" class="btn btn-warning" (click)="accionJugadorVisitante('tapon')">TAPÓN</button></p>
-            <p><button type="button" class="btn btn-secondary" (click)="accionJugadorVisitante('perdida')">PÉRDIDA</button></p>
-            <p><button type="button" class="btn btn-danger" (click)="accionJugadorVisitante('falta')">FALTA</button></p>
+        <div *ngFor="let jugador of jugadoresVisitante" id="accionesJugador">
+            <p>{{partido._jugadoresVisitante[jugador]._nombre}} {{partido._jugadoresVisitante[jugador]._apellidos}}</p>
+            <p><button type="button" class="btn btn-success" (click)="accionJugadorVisitante('canasta', jugador, 1)">+1</button></p>
+            <p><button type="button" class="btn btn-success" (click)="accionJugadorVisitante('canasta', jugador, 2)">+2</button></p>
+            <p><button type="button" class="btn btn-success" (click)="accionJugadorVisitante('canasta', jugador, 3)">+3</button></p>
+            <p><button type="button" class="btn btn-primary" (click)="accionJugadorVisitante('rebote', jugador)">REBOTE</button></p>
+            <p><button type="button" class="btn btn-success" (click)="accionJugadorVisitante('asistencia', jugador)">ASIST.</button></p>
+            <p><button type="button" class="btn btn-light" (click)="accionJugadorVisitante('robo', jugador)">ROBO</button></p>
+            <p><button type="button" class="btn btn-warning" (click)="accionJugadorVisitante('tapon', jugador)">TAPÓN</button></p>
+            <p><button type="button" class="btn btn-secondary" (click)="accionJugadorVisitante('perdida', jugador)">PÉRDIDA</button></p>
+            <p><button type="button" class="btn btn-danger" (click)="accionJugadorVisitante('falta', jugador)">FALTA</button></p>
         </div>
         <div id="tiempos">
             <p>
