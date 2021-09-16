@@ -11,10 +11,11 @@ export class Jugador {
     _tapones: number;
     _perdidas: number;
     _faltas: number;
+    _estaJugando: boolean;
 
     constructor(nombre: string, apellidos: string, numero: string, minutos:number, segundos:number,
         rebotes: number, asistencias: number, robos: number, tapones: number, perdidas: number, 
-        faltas: number, puntos: number) {
+        faltas: number, puntos: number, estaJugando: boolean) {
         this._nombre = nombre
         this._apellidos = apellidos
         this._numero = numero
@@ -27,5 +28,6 @@ export class Jugador {
         this._tapones = tapones;
         this._perdidas = perdidas;
         this._faltas = faltas;
+        this._estaJugando = estaJugando;
     }
 }

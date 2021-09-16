@@ -295,23 +295,49 @@ export class PartidoComponent implements OnInit {
     }
     else {
       for(let i = 0; i < this.partido._jugadoresLocal.length; i++) {
-        this.partido._jugadoresLocal[i]._segundos += ((this.partido._minutoUltimaAccion - this.partido._minutos) * 60) + (this.partido._segundoUltimaAccion - this.partido._segundos);
-        if(this.partido._jugadoresLocal[i]._segundos > 59) {
-          let auxSegundosMinutos = Math.floor(this.partido._jugadoresLocal[i]._segundos / 60);
-          this.partido._jugadoresLocal[i]._minutos += auxSegundosMinutos
-          this.partido._jugadoresLocal[i]._segundos -= (auxSegundosMinutos*60);
-        }
+        if(this.partido._jugadoresLocal[i]._estaJugando) {
+          this.partido._jugadoresLocal[i]._segundos += ((this.partido._minutoUltimaAccion - this.partido._minutos) * 60) + (this.partido._segundoUltimaAccion - this.partido._segundos);
+          if(this.partido._jugadoresLocal[i]._segundos > 59) {
+            let auxSegundosMinutos = Math.floor(this.partido._jugadoresLocal[i]._segundos / 60);
+            this.partido._jugadoresLocal[i]._minutos += auxSegundosMinutos
+            this.partido._jugadoresLocal[i]._segundos -= (auxSegundosMinutos*60);
+          }
+        } 
       }
       for(let i = 0; i < this.partido._jugadoresVisitante.length; i++) {
-        this.partido._jugadoresVisitante[i]._segundos += ((this.partido._minutoUltimaAccion - this.partido._minutos) * 60) + (this.partido._segundoUltimaAccion - this.partido._segundos);
-        if(this.partido._jugadoresVisitante[i]._segundos > 59) {
-          let auxSegundosMinutos = Math.floor(this.partido._jugadoresVisitante[i]._segundos / 60);
-          this.partido._jugadoresVisitante[i]._minutos += auxSegundosMinutos
-          this.partido._jugadoresVisitante[i]._segundos -= (auxSegundosMinutos*60);
+        if(this.partido._jugadoresVisitante[i]._estaJugando) {
+          this.partido._jugadoresVisitante[i]._segundos += ((this.partido._minutoUltimaAccion - this.partido._minutos) * 60) + (this.partido._segundoUltimaAccion - this.partido._segundos);
+          if(this.partido._jugadoresVisitante[i]._segundos > 59) {
+            let auxSegundosMinutos = Math.floor(this.partido._jugadoresVisitante[i]._segundos / 60);
+            this.partido._jugadoresVisitante[i]._minutos += auxSegundosMinutos
+            this.partido._jugadoresVisitante[i]._segundos -= (auxSegundosMinutos*60);
+          }
         }
       }   
       this.partido._minutoUltimaAccion = this.partido._minutos;
       this.partido._segundoUltimaAccion = this.partido._segundos;
+    }
+  }
+
+  cambiarJugadorLocal() {
+    if(this.partido._jugadoresLocal[0]._estaJugando) {
+      this.partido._jugadoresLocal[0]._estaJugando = false;
+      this.partido._jugadoresLocal[5]._estaJugando = true;
+    }
+    else {
+      this.partido._jugadoresLocal[0]._estaJugando = true;
+      this.partido._jugadoresLocal[5]._estaJugando = false;
+    }
+  }
+
+  cambiarJugadorVisitante() {
+    if(this.partido._jugadoresVisitante[0]._estaJugando) {
+      this.partido._jugadoresVisitante[0]._estaJugando = false;
+      this.partido._jugadoresVisitante[5]._estaJugando = true;
+    }
+    else {
+      this.partido._jugadoresVisitante[0]._estaJugando = true;
+      this.partido._jugadoresVisitante[5]._estaJugando = false;
     }
   }
 }

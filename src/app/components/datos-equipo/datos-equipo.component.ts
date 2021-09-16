@@ -164,10 +164,14 @@ export class DatosEquipoComponent implements OnInit {
   }
 
   addLocalPlayer(id: string) {
+    let estaJugando: boolean = true;
+    if(this.partido._jugadoresLocal.length >= 5) {
+      estaJugando = false;
+    }
     let player: Jugador = new Jugador(document.getElementById("nombreJugadorLocal"+id).innerText, 
                                       document.getElementById("apellidosJugadorLocal"+id).innerText,
                                       document.getElementById("numeroJugadorLocal"+id).innerText, 0, 0,
-                                      0, 0, 0, 0, 0, 0, 0)
+                                      0, 0, 0, 0, 0, 0, 0, estaJugando)
     this.partido._jugadoresLocal.push(player)
     this.jugadoresLocalPartido.push(player)
 
@@ -187,10 +191,14 @@ export class DatosEquipoComponent implements OnInit {
   }
 
   addAwayPlayer(id: string) {
+    let estaJugando: boolean = true;
+    if(this.partido._jugadoresVisitante.length >= 5) {
+      estaJugando = false;
+    }
     let player: Jugador = new Jugador(document.getElementById("nombreJugadorVisitante"+id).innerText, 
                                       document.getElementById("apellidosJugadorVisitante"+id).innerText,
                                       document.getElementById("numeroJugadorVisitante"+id).innerText, 0, 0,
-                                      0, 0, 0, 0, 0, 0, 0)
+                                      0, 0, 0, 0, 0, 0, 0, estaJugando)
     this.partido._jugadoresVisitante.push(player)
     this.jugadoresVisitantePartido.push(player)
 
