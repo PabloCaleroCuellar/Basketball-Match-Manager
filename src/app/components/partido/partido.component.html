@@ -25,15 +25,15 @@
         <h2>acciones del {{partido._equipoVisitante.toUpperCase()}}</h2>
         <div *ngFor="let jugador of jugadoresVisitante" id="accionesJugador">
             <p>{{partido._jugadoresVisitante[jugador]._nombre}} {{partido._jugadoresVisitante[jugador]._apellidos}}</p>
-            <p><button type="button" class="btn btn-success" (click)="accionJugadorVisitante('canasta', jugador, 1)">+1</button></p>
-            <p><button type="button" class="btn btn-success" (click)="accionJugadorVisitante('canasta', jugador, 2)">+2</button></p>
-            <p><button type="button" class="btn btn-success" (click)="accionJugadorVisitante('canasta', jugador, 3)">+3</button></p>
-            <p><button type="button" class="btn btn-primary" (click)="accionJugadorVisitante('rebote', jugador)">REBOTE</button></p>
-            <p><button type="button" class="btn btn-success" (click)="accionJugadorVisitante('asistencia', jugador)">ASIST.</button></p>
-            <p><button type="button" class="btn btn-light" (click)="accionJugadorVisitante('robo', jugador)">ROBO</button></p>
-            <p><button type="button" class="btn btn-warning" (click)="accionJugadorVisitante('tapon', jugador)">TAPÓN</button></p>
-            <p><button type="button" class="btn btn-secondary" (click)="accionJugadorVisitante('perdida', jugador)">PÉRDIDA</button></p>
-            <p><button type="button" class="btn btn-danger" (click)="accionJugadorVisitante('falta', jugador)">FALTA</button></p>
+            <p><button type="button" class="btn btn-success" (click)="accionJugadorVisitante('canasta', jugador, 1)" [disabled]="partidoAcabado">+1</button></p>
+            <p><button type="button" class="btn btn-success" (click)="accionJugadorVisitante('canasta', jugador, 2)" [disabled]="partidoAcabado">+2</button></p>
+            <p><button type="button" class="btn btn-success" (click)="accionJugadorVisitante('canasta', jugador, 3)" [disabled]="partidoAcabado">+3</button></p>
+            <p><button type="button" class="btn btn-primary" (click)="accionJugadorVisitante('rebote', jugador)" [disabled]="partidoAcabado">REBOTE</button></p>
+            <p><button type="button" class="btn btn-success" (click)="accionJugadorVisitante('asistencia', jugador)" [disabled]="partidoAcabado">ASIST.</button></p>
+            <p><button type="button" class="btn btn-light" (click)="accionJugadorVisitante('robo', jugador)" [disabled]="partidoAcabado">ROBO</button></p>
+            <p><button type="button" class="btn btn-warning" (click)="accionJugadorVisitante('tapon', jugador)" [disabled]="partidoAcabado">TAPÓN</button></p>
+            <p><button type="button" class="btn btn-secondary" (click)="accionJugadorVisitante('perdida', jugador)" [disabled]="partidoAcabado">PÉRDIDA</button></p>
+            <p><button type="button" class="btn btn-danger" (click)="accionJugadorVisitante('falta', jugador)" [disabled]="partidoAcabado">FALTA</button></p>
         </div>
         <div id="tiempos">
             <p>

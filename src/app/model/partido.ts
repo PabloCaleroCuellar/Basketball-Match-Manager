@@ -24,13 +24,15 @@ export class Partido {
     _taponesVisitante: number;
     _perdidasLocal: number;
     _perdidasVisitante: number;
+    _minutoUltimaAccion: number;
+    _segundoUltimaAccion: number;
 
     constructor(equipoLocal: string, equipoVisitante: string, cuarto: number, minutos: number, segundos: number, 
         puntosLocal: number, puntosVisitante: number, faltasLocal: number, faltasVisitante: number, 
         tiemposLocal: number, tiemposVisitante: number, jugadoresLocal: Jugador[], jugadoresVisitante: Jugador[],
         rebotesLocal: number, asistenciasLocal: number, robosLocal: number, taponesLocal: number, perdidasLocal: number,
         rebotesVisitante: number, asistenciasVisitante: number, robosVisitante: number, taponesVisitante: number, 
-        perdidasVisitante: number) {
+        perdidasVisitante: number, minutoUltimaAccion: number, segundoUltimaAccion: number) {
         this._equipoLocal = equipoLocal;
         this._equipoVisitante = equipoVisitante;
         this._cuarto = cuarto;
@@ -54,6 +56,8 @@ export class Partido {
         this._robosVisitante = robosVisitante
         this._taponesVisitante = taponesVisitante
         this._perdidasVisitante = perdidasVisitante
+        this._minutoUltimaAccion = minutoUltimaAccion;
+        this._segundoUltimaAccion = segundoUltimaAccion;
       }
 }
 

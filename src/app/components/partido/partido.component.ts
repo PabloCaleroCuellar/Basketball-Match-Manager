@@ -17,8 +17,8 @@ let partidoEmpezado: boolean = false;
 export class PartidoComponent implements OnInit {
 
   partido: Partido
-  jugadoresLocal:number[] = new Array;
-  jugadoresVisitante:number[] = new Array;
+  jugadoresLocal: number[] = new Array;
+  jugadoresVisitante: number[] = new Array;
 
   constructor(private data: DataService) { }
 
@@ -247,6 +247,7 @@ export class PartidoComponent implements OnInit {
               (<HTMLInputElement> botones[i]).disabled = true;
             }
             partidoAcabado = true
+            this.añadirMinutosAJugadores()
             this.partido._cuarto = 4
             this.partido._minutos = 88;
             this.partido._segundos = 88;
@@ -267,39 +268,50 @@ export class PartidoComponent implements OnInit {
               botonTimer.innerHTML = "Reanudar partido";
             }
             interval = null;
+            this.añadirMinutosAJugadores()
             this.partido._minutos = 10;
             this.partido._segundos = 0;
+            this.añadirMinutosAJugadores()
           }
           this.partido._faltasLocal = 0;
           this.partido._faltasVisitante = 0;
           (<HTMLInputElement> document.getElementById("tiempoMuertoLocal")).disabled = true;
           (<HTMLInputElement> document.getElementById("tiempoMuertoVisitante")).disabled = true;
         }
-      }, 1000);
+      }, 100);
     } 
     else {
       isTimerOn = false
       clearInterval(interval);
       interval = null;
+      this.añadirMinutosAJugadores()
     }
   }
 
   añadirMinutosAJugadores() {
-    for(let i = 0; i < this.partido._jugadoresLocal.length; i++) {
-      this.partido._jugadoresLocal[i]._segundos = ((this.partido._cuarto * 60 * 10) - (this.partido._minutos*60 + this.partido._segundos))
-      if(this.partido._jugadoresLocal[i]._segundos > 59) {
-        let auxSegundosMinutos = Math.floor(this.partido._jugadoresLocal[i]._segundos / 60);
-        this.partido._jugadoresLocal[i]._minutos = auxSegundosMinutos;
-        this.partido._jugadoresLocal[i]._segundos = this.partido._jugadoresLocal[i]._segundos - auxSegundosMinutos*60;
-      }
+    if(this.partido._minutos === 10) {
+      this.partido._minutoUltimaAccion = 9;
+      this.partido._segundoUltimaAccion = 60;
     }
-    for(let i = 0; i < this.partido._jugadoresVisitante.length; i++) {
-      this.partido._jugadoresVisitante[i]._segundos = ((this.partido._cuarto * 60 * 10) - (this.partido._minutos*60 + this.partido._segundos))
-      if(this.partido._jugadoresVisitante[i]._segundos > 59) {
-        let auxSegundosMinutos = Math.floor(this.partido._jugadoresVisitante[i]._segundos / 60);
-        this.partido._jugadoresVisitante[i]._minutos = auxSegundosMinutos;
-        this.partido._jugadoresVisitante[i]._segundos = this.partido._jugadoresVisitante[i]._segundos - auxSegundosMinutos*60;
+    else {
+      for(let i = 0; i < this.partido._jugadoresLocal.length; i++) {
+        this.partido._jugadoresLocal[i]._segundos += ((this.partido._minutoUltimaAccion - this.partido._minutos) * 60) + (this.partido._segundoUltimaAccion - this.partido._segundos);
+        if(this.partido._jugadoresLocal[i]._segundos > 59) {
+          let auxSegundosMinutos = Math.floor(this.partido._jugadoresLocal[i]._segundos / 60);
+          this.partido._jugadoresLocal[i]._minutos += auxSegundosMinutos
+          this.partido._jugadoresLocal[i]._segundos -= (auxSegundosMinutos*60);
+        }
       }
+      for(let i = 0; i < this.partido._jugadoresVisitante.length; i++) {
+        this.partido._jugadoresVisitante[i]._segundos += ((this.partido._minutoUltimaAccion - this.partido._minutos) * 60) + (this.partido._segundoUltimaAccion - this.partido._segundos);
+        if(this.partido._jugadoresVisitante[i]._segundos > 59) {
+          let auxSegundosMinutos = Math.floor(this.partido._jugadoresVisitante[i]._segundos / 60);
+          this.partido._jugadoresVisitante[i]._minutos += auxSegundosMinutos
+          this.partido._jugadoresVisitante[i]._segundos -= (auxSegundosMinutos*60);
+        }
+      }   
+      this.partido._minutoUltimaAccion = this.partido._minutos;
+      this.partido._segundoUltimaAccion = this.partido._segundos;
     }
   }
 }
