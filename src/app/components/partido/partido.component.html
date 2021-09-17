@@ -1,27 +1,81 @@
 <body>
+    <div id="popupCambio" *ngIf="hacerCambio">
+        <div id="partido-local-popup">
+            <div id="banquillo">
+                <h3>Banquillo: </h3>
+                <div *ngFor="let jugador of jugadoresLocal" id="accionesJugador">
+                    <div *ngIf="!partido._jugadoresLocal[jugador]._estaJugando">
+                        <p>
+                            <button type="button" class="btn btn-success" [disabled]="partidoAcabado" (click)="aniadirColaCambiosLocal(jugador)">
+                                {{partido._jugadoresLocal[jugador]._nombre}} {{partido._jugadoresLocal[jugador]._apellidos}}
+                            </button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div id="jugando">
+                <h3>Jugando: </h3>
+                <div *ngFor="let jugador of jugadoresLocal" id="accionesJugador">
+                    <div *ngIf="partido._jugadoresLocal[jugador]._estaJugando">
+                        <p>
+                            <button type="button" class="btn btn-warning" [disabled]="partidoAcabado" (click)="aniadirColaCambiosLocal(jugador)">
+                                {{partido._jugadoresLocal[jugador]._nombre}} {{partido._jugadoresLocal[jugador]._apellidos}}
+                            </button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="partido-visitante-popup">
+            <div id="banquillo">
+                <h3>Banquillo: </h3>
+                <div *ngFor="let jugador of jugadoresVisitante" id="accionesJugador">
+                    <div *ngIf="!partido._jugadoresVisitante[jugador]._estaJugando">
+                        <p>
+                            <button type="button" class="btn btn-success" [disabled]="partidoAcabado" (click)="aniadirColaCambiosVisitante(jugador)">
+                                {{partido._jugadoresVisitante[jugador]._nombre}} {{partido._jugadoresVisitante[jugador]._apellidos}}
+                            </button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div id="jugando">
+                <h3>Jugando: </h3>
+                <div *ngFor="let jugador of jugadoresVisitante" id="accionesJugador">
+                    <div *ngIf="partido._jugadoresVisitante[jugador]._estaJugando">
+                        <p>
+                            <button type="button" class="btn btn-warning" [disabled]="partidoAcabado" (click)="aniadirColaCambiosVisitante(jugador)">
+                                {{partido._jugadoresVisitante[jugador]._nombre}} {{partido._jugadoresVisitante[jugador]._apellidos}}
+                            </button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="button" id="tiempoMuertoVisitante" class="btn btn-info" (click)="realizarCambios()">
+            REALIZAR CAMBIOS
+        </button>
+    </div>
     <div id="partido-local">
         <h2>acciones del {{partido._equipoLocal.toUpperCase()}}</h2>
         <div *ngFor="let jugador of jugadoresLocal" id="accionesJugador">
             <div *ngIf="partido._jugadoresLocal[jugador]._estaJugando">
                 <p>{{partido._jugadoresLocal[jugador]._nombre}} {{partido._jugadoresLocal[jugador]._apellidos}}</p>
-                <p><button type="button" class="btn btn-success" (click)="accionJugadorLocal('canasta', jugador, 1)">+1</button></p>
-                <p><button type="button" class="btn btn-success" (click)="accionJugadorLocal('canasta', jugador, 2)">+2</button></p>
-                <p><button type="button" class="btn btn-success" (click)="accionJugadorLocal('canasta', jugador, 3)">+3</button></p>
-                <p><button type="button" class="btn btn-primary" (click)="accionJugadorLocal('rebote', jugador)">REBOTE</button></p>
-                <p><button type="button" class="btn btn-success" (click)="accionJugadorLocal('asistencia', jugador)">ASIST.</button></p>
-                <p><button type="button" class="btn btn-light" (click)="accionJugadorLocal('robo', jugador)">ROBO</button></p>
-                <p><button type="button" class="btn btn-warning" (click)="accionJugadorLocal('tapon', jugador)">TAPÓN</button></p>
-                <p><button type="button" class="btn btn-secondary" (click)="accionJugadorLocal('perdida', jugador)">PÉRDIDA</button></p>
-                <p><button type="button" class="btn btn-danger" (click)="accionJugadorLocal('falta', jugador)">FALTA</button></p>
+                <p><button type="button" class="btn btn-success" (click)="accionJugadorLocal('canasta', jugador, 1)" [disabled]="partidoAcabado">+1</button></p>
+                <p><button type="button" class="btn btn-success" (click)="accionJugadorLocal('canasta', jugador, 2)" [disabled]="partidoAcabado">+2</button></p>
+                <p><button type="button" class="btn btn-success" (click)="accionJugadorLocal('canasta', jugador, 3)" [disabled]="partidoAcabado">+3</button></p>
+                <p><button type="button" class="btn btn-primary" (click)="accionJugadorLocal('rebote', jugador)" [disabled]="partidoAcabado">REBOTE</button></p>
+                <p><button type="button" class="btn btn-success" (click)="accionJugadorLocal('asistencia', jugador)" [disabled]="partidoAcabado">ASIST.</button></p>
+                <p><button type="button" class="btn btn-light" (click)="accionJugadorLocal('robo', jugador)" [disabled]="partidoAcabado">ROBO</button></p>
+                <p><button type="button" class="btn btn-warning" (click)="accionJugadorLocal('tapon', jugador)" [disabled]="partidoAcabado">TAPÓN</button></p>
+                <p><button type="button" class="btn btn-secondary" (click)="accionJugadorLocal('perdida', jugador)" [disabled]="partidoAcabado">PÉRDIDA</button></p>
+                <p><button type="button" class="btn btn-danger" (click)="accionJugadorLocal('falta', jugador)" [disabled]="partidoAcabado">FALTA</button></p>
             </div>
         </div>
         <div id="tiempos">
             <p>
                 <button type="button" id="tiempoMuertoLocal" class="btn btn-info" (click)="tiempoMuertoLocal()">
                     TIEMPO MUERTO
-                </button>
-                <button type="button" id="tiempoMuertoLocal" class="btn btn-warning" (click)="cambiarJugadorLocal()">
-                    CAMBIO
                 </button>
             </p>
         </div>
@@ -47,11 +101,11 @@
                 <button type="button" id="tiempoMuertoVisitante" class="btn btn-info" (click)="tiempoMuertoVisitante()">
                     TIEMPO MUERTO
                 </button>
-                <button type="button" id="tiempoMuertoVisitante" class="btn btn-warning" (click)="cambiarJugadorVisitante()">
-                    CAMBIO
-                </button>
             </p>
         </div>
     </div>
     <button id="timer" class="btn btn-success" (click)="Interval()">Reanudar partido</button>
+    <button type="button" id="tiempoMuertoVisitante" class="btn btn-info" (click)="popupCambio()">
+        CAMBIO
+    </button>
 </body>

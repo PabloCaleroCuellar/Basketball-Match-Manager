@@ -19,6 +19,7 @@ export class PartidoComponent implements OnInit {
   partido: Partido
   jugadoresLocal: number[] = new Array;
   jugadoresVisitante: number[] = new Array;
+  hacerCambio: boolean = false;
 
   constructor(private data: DataService) { }
 
@@ -319,25 +320,116 @@ export class PartidoComponent implements OnInit {
     }
   }
 
-  cambiarJugadorLocal() {
-    if(this.partido._jugadoresLocal[0]._estaJugando) {
-      this.partido._jugadoresLocal[0]._estaJugando = false;
-      this.partido._jugadoresLocal[5]._estaJugando = true;
-    }
-    else {
-      this.partido._jugadoresLocal[0]._estaJugando = true;
-      this.partido._jugadoresLocal[5]._estaJugando = false;
-    }
-  }
-
-  cambiarJugadorVisitante() {
-    if(this.partido._jugadoresVisitante[0]._estaJugando) {
+  popupCambio() {
+    /*if(this.partido._jugadoresVisitante[0]._estaJugando) {
       this.partido._jugadoresVisitante[0]._estaJugando = false;
       this.partido._jugadoresVisitante[5]._estaJugando = true;
     }
     else {
       this.partido._jugadoresVisitante[0]._estaJugando = true;
       this.partido._jugadoresVisitante[5]._estaJugando = false;
+    }*/
+    this.hacerCambio = !this.hacerCambio
+    if(this.hacerCambio) {
+      document.getElementById("partido-local").style.backgroundColor = "black"
+      document.getElementById("partido-local").style.opacity = "0.5";
+      document.getElementById("partido-visitante").style.backgroundColor = "black"
+      document.getElementById("partido-visitante").style.opacity = "0.5";
+      document.getElementById("popupCambio").style.opacity = "1"
     }
+    else {
+      document.getElementById("partido-local").style.backgroundColor = "transparent"
+      document.getElementById("partido-local").style.opacity = "1";
+      document.getElementById("partido-visitante").style.backgroundColor = "transparent"
+      document.getElementById("partido-visitante").style.opacity = "1";
+    }
+  }
+
+  aniadirColaCambiosLocal(idJugador: number) {
+    if(this.partido._jugadoresLocal[idJugador]._estaJugando) {
+      this.partido._cambiosSalenPistaLocal.push(this.partido._jugadoresLocal[idJugador])
+    }
+    else {
+      this.partido._cambiosEntranPistaLocal.push(this.partido._jugadoresLocal[idJugador])
+    }
+  }
+
+  aniadirColaCambiosVisitante(idJugador: number) {
+    if(this.partido._jugadoresVisitante[idJugador]._estaJugando) {
+      this.partido._cambiosSalenPistaVisitante.push(this.partido._jugadoresVisitante[idJugador])
+    }
+    else {
+      this.partido._cambiosEntranPistaVisitante.push(this.partido._jugadoresVisitante[idJugador])
+    }
+  }
+
+  realizarCambios() {
+    for(let i = 0; i < this.partido._cambiosSalenPistaVisitante.length; i++) {
+      for(let x = 0; x < this.partido._jugadoresVisitante.length; x++) {
+        if(this.partido._cambiosSalenPistaVisitante[i]._nombre === this.partido._jugadoresVisitante[x]._nombre &&
+        this.partido._cambiosSalenPistaVisitante[i]._apellidos === this.partido._jugadoresVisitante[x]._apellidos &&
+        this.partido._cambiosSalenPistaVisitante[i]._numero === this.partido._jugadoresVisitante[x]._numero) {
+          this.partido._jugadoresVisitante[x]._estaJugando = false;
+          this.partido._cambiosSalenPistaVisitante[i]._estaJugando = false;
+          break;
+        }
+        else{
+          continue;
+        }
+      }
+    }
+    for(let i = 0; i < this.partido._cambiosSalenPistaLocal.length; i++) {
+      for(let x = 0; x < this.partido._jugadoresLocal.length; x++) {
+        if(this.partido._cambiosSalenPistaLocal[i]._nombre === this.partido._jugadoresLocal[x]._nombre &&
+        this.partido._cambiosSalenPistaLocal[i]._apellidos === this.partido._jugadoresLocal[x]._apellidos &&
+        this.partido._cambiosSalenPistaLocal[i]._numero === this.partido._jugadoresLocal[x]._numero) {
+          this.partido._jugadoresLocal[x]._estaJugando = false;
+          this.partido._cambiosSalenPistaLocal[i]._estaJugando = false;
+          break;
+        }
+        else{
+          continue;
+        }
+      }
+    }
+    for(let i = 0; i < this.partido._cambiosEntranPistaVisitante.length; i++) {
+      for(let x = 0; x < this.partido._jugadoresVisitante.length; x++) {
+        if(this.partido._cambiosEntranPistaVisitante[i]._nombre === this.partido._jugadoresVisitante[x]._nombre &&
+        this.partido._cambiosEntranPistaVisitante[i]._apellidos === this.partido._jugadoresVisitante[x]._apellidos &&
+        this.partido._cambiosEntranPistaVisitante[i]._numero === this.partido._jugadoresVisitante[x]._numero) {
+          this.partido._jugadoresVisitante[x]._estaJugando = true;
+          this.partido._cambiosEntranPistaVisitante[i]._estaJugando = true;
+          break;
+        }
+        else{
+          continue;
+        }
+      }
+    }
+    for(let i = 0; i < this.partido._cambiosEntranPistaLocal.length; i++) {
+      for(let x = 0; x < this.partido._jugadoresLocal.length; x++) {
+        if(this.partido._cambiosEntranPistaLocal[i]._nombre === this.partido._jugadoresLocal[x]._nombre &&
+        this.partido._cambiosEntranPistaLocal[i]._apellidos === this.partido._jugadoresLocal[x]._apellidos &&
+        this.partido._cambiosEntranPistaLocal[i]._numero === this.partido._jugadoresLocal[x]._numero) {
+          this.partido._jugadoresLocal[x]._estaJugando = true;
+          this.partido._cambiosEntranPistaLocal[i]._estaJugando = true;
+          break;
+        }
+        else{
+          continue;
+        }
+      }
+    }
+    this.partido._cambiosSalenPistaLocal = new Array;
+    this.partido._cambiosSalenPistaVisitante = new Array;
+    this.partido._cambiosEntranPistaLocal = new Array;
+    this.partido._cambiosEntranPistaVisitante = new Array;
+    this.hacerCambio = !this.hacerCambio;
+    document.getElementById("partido-local").style.backgroundColor = "transparent"
+    document.getElementById("partido-visitante").style.backgroundColor = "transparent"
+    document.getElementById("partido-visitante").style.opacity = "1";
+    document.getElementById("partido-local").style.opacity = "1";
+    console.log(this.partido._jugadoresVisitante)
+    console.log(this.partido._jugadoresLocal)
   }
 }

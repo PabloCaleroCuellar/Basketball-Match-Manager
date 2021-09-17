@@ -26,13 +26,19 @@ export class Partido {
     _perdidasVisitante: number;
     _minutoUltimaAccion: number;
     _segundoUltimaAccion: number;
+    _cambiosEntranPistaLocal: Jugador[];
+    _cambiosEntranPistaVisitante: Jugador[];
+    _cambiosSalenPistaLocal: Jugador[];
+    _cambiosSalenPistaVisitante: Jugador[];
 
     constructor(equipoLocal: string, equipoVisitante: string, cuarto: number, minutos: number, segundos: number, 
         puntosLocal: number, puntosVisitante: number, faltasLocal: number, faltasVisitante: number, 
         tiemposLocal: number, tiemposVisitante: number, jugadoresLocal: Jugador[], jugadoresVisitante: Jugador[],
         rebotesLocal: number, asistenciasLocal: number, robosLocal: number, taponesLocal: number, perdidasLocal: number,
         rebotesVisitante: number, asistenciasVisitante: number, robosVisitante: number, taponesVisitante: number, 
-        perdidasVisitante: number, minutoUltimaAccion: number, segundoUltimaAccion: number) {
+        perdidasVisitante: number, minutoUltimaAccion: number, segundoUltimaAccion: number, 
+        cambiosEntranPistaLocal: Jugador[], cambiosEntranPistaVisitante: Jugador[], cambiosSalenPistaLocal: Jugador[],
+        cambiosSalenPistaVisitante: Jugador[]) {
         this._equipoLocal = equipoLocal;
         this._equipoVisitante = equipoVisitante;
         this._cuarto = cuarto;
@@ -58,6 +64,10 @@ export class Partido {
         this._perdidasVisitante = perdidasVisitante
         this._minutoUltimaAccion = minutoUltimaAccion;
         this._segundoUltimaAccion = segundoUltimaAccion;
+        this._cambiosEntranPistaLocal = cambiosEntranPistaLocal;
+        this._cambiosEntranPistaVisitante = cambiosEntranPistaVisitante;
+        this._cambiosSalenPistaLocal = cambiosSalenPistaLocal;
+        this._cambiosSalenPistaVisitante = cambiosSalenPistaVisitante;
       }
 }
 

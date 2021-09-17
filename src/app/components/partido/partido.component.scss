@@ -49,3 +49,35 @@ p, h3 {
 #tiempos {
     padding-right: 30%;
 }
+
+#popupCambio {
+    position: fixed;
+    text-align: center;
+    width: 100%;
+    border-radius: 25px;
+    background-color: white;
+    margin-top: 1%;
+    z-index: 80;
+}
+
+#banquillo {
+    float: left;
+    margin-left: 3%;
+}
+
+#jugando {
+    float: left;
+    margin-left: 3%;
+}
+
+#partido-local-popup, #partido-visitante-popup {
+    float: left;
+    width: 50%;
+    height: 100%;
+    text-align: center;
+    padding-left: 15%;
+}
+
+h3 {
+    border-bottom: 1px solid black;
+}
