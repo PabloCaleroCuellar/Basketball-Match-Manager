@@ -52,7 +52,7 @@
                 </div>
             </div>
         </div>
-        <button type="button" id="tiempoMuertoVisitante" class="btn btn-info" (click)="realizarCambios()">
+        <button type="button" id="cambio" class="btn btn-info" (click)="realizarCambios()" [disabled]="isTimerOn">
             REALIZAR CAMBIOS
         </button>
     </div>

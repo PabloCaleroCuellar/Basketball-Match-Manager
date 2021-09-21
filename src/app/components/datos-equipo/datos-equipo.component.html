@@ -34,7 +34,7 @@
                 <li id="apellidosJugadorLocal{{idJugadorLocal}}" class="list-group-item" (click)="deleteSurnameLocalPlayer(idJugadorLocal)" (mouseover)="checkJugadorLocal(idJugadorLocal)">Apellidos</li>
                 <li id="numeroJugadorLocal{{idJugadorLocal}}" class="list-group-item" (click)="deleteNumberLocalPlayer(idJugadorLocal)" (mouseover)="checkJugadorLocal(idJugadorLocal)">Número</li>
             </ul>
-            <p style="text-align: center; padding-top: 31%;"><button id="botonAñadirLocal" type="button" class="btn btn-success" (click)="addLocalPlayer(idJugadorLocal)" [disabled]="!nombreJugadorLocal || !apellidosJugadorLocal || !numeroJugadorLocal" (mouseout)="checkJugadorLocal(idJugadorLocal)">añadir jugador local</button></p>
+            <p style="text-align: center; padding-top: 31%;"><button id="botonAñadirLocal" type="button" class="btn btn-success" (click)="addLocalPlayer(idJugadorLocal)" [disabled]="!nombreJugadorLocal || !apellidosJugadorLocal || !numeroJugadorLocal || maximoJugadoresLocal" (mouseout)="checkJugadorLocal(idJugadorLocal)">añadir jugador local</button></p>
         </div>
         <p>Jugadores: {{idJugadorLocal}}/5</p>
     </div>
@@ -73,7 +73,7 @@
                 <li id="apellidosJugadorVisitante{{idJugadorVisitante}}" class="list-group-item" (click)="deleteSurnameAwayPlayer(idJugadorVisitante)" (mouseover)="checkJugadorVisitante(idJugadorVisitante)">Apellidos</li>
                 <li id="numeroJugadorVisitante{{idJugadorVisitante}}" class="list-group-item" (click)="deleteNumberAwayPlayer(idJugadorVisitante)" (mouseover)="checkJugadorVisitante(idJugadorVisitante)">Número</li>
             </ul>
-            <p style="text-align: center; padding-top: 31%;"><button id="boton" type="button" class="btn btn-success" (click)="addAwayPlayer(idJugadorVisitante)" [disabled]="!nombreJugadorVisitante || !apellidosJugadorVisitante || !numeroJugadorVisitante" (mouseout)="checkJugadorVisitante(idJugadorVisitante)">añadir jugador visitante</button></p>
+            <p style="text-align: center; padding-top: 31%;"><button id="boton" type="button" class="btn btn-success" (click)="addAwayPlayer(idJugadorVisitante)" [disabled]="!nombreJugadorVisitante || !apellidosJugadorVisitante || !numeroJugadorVisitante|| maximoJugadoresVisitante" (mouseout)="checkJugadorVisitante(idJugadorVisitante)">añadir jugador visitante</button></p>
         </div>
         <p>Jugadores: {{idJugadorVisitante}}/5</p>
     </div>

@@ -31,6 +31,8 @@ export class DatosEquipoComponent implements OnInit {
   equipoLocal: string
   equipoVisitante: string
   todosDatosOk: boolean = false
+  maximoJugadoresLocal: boolean = false
+  maximoJugadoresVisitante: boolean = false
 
   constructor(private data: DataService, private router: Router) { }
 
@@ -60,6 +62,12 @@ export class DatosEquipoComponent implements OnInit {
     if(this.jugadoresVisitante.length >= 5) {
       this.minimoJugadoresVisitante = true
     }
+    if(this.jugadoresLocal.length >= 12) {
+      this.maximoJugadoresLocal = true
+    }
+    if(this.jugadoresVisitante.length >= 12) {
+      this.maximoJugadoresVisitante = true
+    }
     this.equipoLocal = this.partido._equipoLocal
     this.equipoVisitante = this.partido._equipoVisitante
     if(this.partido._jugadoresLocal.length >= 5 && this.partido._jugadoresVisitante.length >= 5
@@ -80,58 +88,6 @@ export class DatosEquipoComponent implements OnInit {
     this.partido._segundos = 0;
     this.router.navigateByUrl('/partido');
   }
-
-  /*setPlayers(team: string) {
-    if(team == "Local") {
-      for(let all = 0; all < this.titulares.length; all++) {
-        let id = "jugadorLocal" + (all+1).toString()
-        document.getElementById(id).style.display = "none"
-      }
-      let selectLocal = parseInt((<HTMLInputElement> document.getElementById("selectLocal")).value);
-
-      for(let x = 0; x < selectLocal; x++) {
-        let id = "jugadorLocal" + (x+1).toString()
-        let nombreJugador = "nombreJugadorLocal" + (x+1).toString()
-        let apellidoJugador = "apellidosJugadorLocal" + (x+1).toString()
-        let numeroJugador = "numeroJugadorLocal" + (x+1).toString()
-        if(document.getElementById(id).style.display == ''){
-          document.getElementById(id).style.display = "none"
-        }
-        document.getElementById(id).style.display = document.getElementById(id).style.display === 'none' ? '' : 'none';
-        (<HTMLInputElement>document.getElementById(nombreJugador)).contentEditable = "true";
-        (<HTMLInputElement>document.getElementById(apellidoJugador)).contentEditable = "true";
-        (<HTMLInputElement>document.getElementById(numeroJugador)).contentEditable = "true";
-      }
-    }
-    else {
-      for(let all = 0; all < this.maximoJugadores.length; all++) {
-        let id = "jugadorVisitante" + (all+1).toString()
-        document.getElementById(id).style.display = "none"
-      }
-      let selectVisitante = parseInt((<HTMLInputElement> document.getElementById("selectVisitante")).value);
-
-      //QUITAR ESTO CUANDO CONSIGA PODER PONER MAS DE 5 JUGADORES SIN QUE SE ROMPA EL MARCADOR
-      if(selectVisitante > 5) {
-        selectVisitante = 5
-      }
-      //HASTA AQUI
-      
-      for(let x = 0; x < selectVisitante; x++) {
-        let id = "jugadorVisitante" + (x+1).toString()
-        let nombreJugador = "nombreJugadorVisitante" + (x+1).toString()
-        let apellidoJugador = "apellidosJugadorVisitante" + (x+1).toString()
-        let numeroJugador = "numeroJugadorVisitante" + (x+1).toString()
-        console.log(id + "tenia display: " +document.getElementById(id).style.display)
-        if(document.getElementById(id).style.display == ''){
-          document.getElementById(id).style.display = "none"
-        }
-        document.getElementById(id).style.display = document.getElementById(id).style.display === 'none' ? '' : 'none';
-        (<HTMLInputElement>document.getElementById(nombreJugador)).contentEditable = "true";
-        (<HTMLInputElement>document.getElementById(apellidoJugador)).contentEditable = "true";
-        (<HTMLInputElement>document.getElementById(numeroJugador)).contentEditable = "true";
-      }
-    }
-  }*/
 
   deleteNameLocalPlayer(id: string) {
     document.getElementById("nombreJugadorLocal"+id).innerHTML = "";
@@ -168,7 +124,7 @@ export class DatosEquipoComponent implements OnInit {
     if(this.partido._jugadoresLocal.length >= 5) {
       estaJugando = false;
     }
-    let player: Jugador = new Jugador(document.getElementById("nombreJugadorLocal"+id).innerText, 
+    let player: Jugador = new Jugador(this.idJugadorLocal, document.getElementById("nombreJugadorLocal"+id).innerText, 
                                       document.getElementById("apellidosJugadorLocal"+id).innerText,
                                       document.getElementById("numeroJugadorLocal"+id).innerText, 0, 0,
                                       0, 0, 0, 0, 0, 0, 0, estaJugando)
@@ -184,6 +140,9 @@ export class DatosEquipoComponent implements OnInit {
     if(this.idJugadorLocal >= 5) {
       this.minimoJugadoresLocal = true
     }
+    if(this.idJugadorLocal >= 12) {
+      this.maximoJugadoresLocal = true
+    }
     if(this.partido._jugadoresLocal.length >= 5 && this.partido._jugadoresVisitante.length >= 5
       && this.partido._equipoLocal != "" && this.partido._equipoVisitante != "") {
         this.todosDatosOk = true
@@ -195,7 +154,7 @@ export class DatosEquipoComponent implements OnInit {
     if(this.partido._jugadoresVisitante.length >= 5) {
       estaJugando = false;
     }
-    let player: Jugador = new Jugador(document.getElementById("nombreJugadorVisitante"+id).innerText, 
+    let player: Jugador = new Jugador(this.idJugadorVisitante, document.getElementById("nombreJugadorVisitante"+id).innerText, 
                                       document.getElementById("apellidosJugadorVisitante"+id).innerText,
                                       document.getElementById("numeroJugadorVisitante"+id).innerText, 0, 0,
                                       0, 0, 0, 0, 0, 0, 0, estaJugando)
@@ -210,6 +169,9 @@ export class DatosEquipoComponent implements OnInit {
     this.nombreJugadorVisitante=false
     if(this.idJugadorVisitante >= 5) {
       this.minimoJugadoresVisitante = true
+    }
+    if(this.idJugadorVisitante >= 12) {
+      this.maximoJugadoresVisitante = true
     }
     if(this.partido._jugadoresLocal.length >= 5 && this.partido._jugadoresVisitante.length >= 5
       && this.partido._equipoLocal != "" && this.partido._equipoVisitante != "") {

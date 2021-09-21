@@ -321,21 +321,12 @@ export class PartidoComponent implements OnInit {
   }
 
   popupCambio() {
-    /*if(this.partido._jugadoresVisitante[0]._estaJugando) {
-      this.partido._jugadoresVisitante[0]._estaJugando = false;
-      this.partido._jugadoresVisitante[5]._estaJugando = true;
-    }
-    else {
-      this.partido._jugadoresVisitante[0]._estaJugando = true;
-      this.partido._jugadoresVisitante[5]._estaJugando = false;
-    }*/
     this.hacerCambio = !this.hacerCambio
     if(this.hacerCambio) {
       document.getElementById("partido-local").style.backgroundColor = "black"
       document.getElementById("partido-local").style.opacity = "0.5";
       document.getElementById("partido-visitante").style.backgroundColor = "black"
       document.getElementById("partido-visitante").style.opacity = "0.5";
-      document.getElementById("popupCambio").style.opacity = "1"
     }
     else {
       document.getElementById("partido-local").style.backgroundColor = "transparent"
@@ -366,9 +357,7 @@ export class PartidoComponent implements OnInit {
   realizarCambios() {
     for(let i = 0; i < this.partido._cambiosSalenPistaVisitante.length; i++) {
       for(let x = 0; x < this.partido._jugadoresVisitante.length; x++) {
-        if(this.partido._cambiosSalenPistaVisitante[i]._nombre === this.partido._jugadoresVisitante[x]._nombre &&
-        this.partido._cambiosSalenPistaVisitante[i]._apellidos === this.partido._jugadoresVisitante[x]._apellidos &&
-        this.partido._cambiosSalenPistaVisitante[i]._numero === this.partido._jugadoresVisitante[x]._numero) {
+        if(this.partido._cambiosSalenPistaVisitante[i]._id === this.partido._jugadoresVisitante[x]._id) {
           this.partido._jugadoresVisitante[x]._estaJugando = false;
           this.partido._cambiosSalenPistaVisitante[i]._estaJugando = false;
           break;
@@ -380,9 +369,7 @@ export class PartidoComponent implements OnInit {
     }
     for(let i = 0; i < this.partido._cambiosSalenPistaLocal.length; i++) {
       for(let x = 0; x < this.partido._jugadoresLocal.length; x++) {
-        if(this.partido._cambiosSalenPistaLocal[i]._nombre === this.partido._jugadoresLocal[x]._nombre &&
-        this.partido._cambiosSalenPistaLocal[i]._apellidos === this.partido._jugadoresLocal[x]._apellidos &&
-        this.partido._cambiosSalenPistaLocal[i]._numero === this.partido._jugadoresLocal[x]._numero) {
+        if(this.partido._cambiosSalenPistaLocal[i]._id === this.partido._jugadoresLocal[x]._id) {
           this.partido._jugadoresLocal[x]._estaJugando = false;
           this.partido._cambiosSalenPistaLocal[i]._estaJugando = false;
           break;
@@ -394,9 +381,7 @@ export class PartidoComponent implements OnInit {
     }
     for(let i = 0; i < this.partido._cambiosEntranPistaVisitante.length; i++) {
       for(let x = 0; x < this.partido._jugadoresVisitante.length; x++) {
-        if(this.partido._cambiosEntranPistaVisitante[i]._nombre === this.partido._jugadoresVisitante[x]._nombre &&
-        this.partido._cambiosEntranPistaVisitante[i]._apellidos === this.partido._jugadoresVisitante[x]._apellidos &&
-        this.partido._cambiosEntranPistaVisitante[i]._numero === this.partido._jugadoresVisitante[x]._numero) {
+        if(this.partido._cambiosEntranPistaVisitante[i]._id === this.partido._jugadoresVisitante[x]._id) {
           this.partido._jugadoresVisitante[x]._estaJugando = true;
           this.partido._cambiosEntranPistaVisitante[i]._estaJugando = true;
           break;
@@ -408,9 +393,7 @@ export class PartidoComponent implements OnInit {
     }
     for(let i = 0; i < this.partido._cambiosEntranPistaLocal.length; i++) {
       for(let x = 0; x < this.partido._jugadoresLocal.length; x++) {
-        if(this.partido._cambiosEntranPistaLocal[i]._nombre === this.partido._jugadoresLocal[x]._nombre &&
-        this.partido._cambiosEntranPistaLocal[i]._apellidos === this.partido._jugadoresLocal[x]._apellidos &&
-        this.partido._cambiosEntranPistaLocal[i]._numero === this.partido._jugadoresLocal[x]._numero) {
+        if(this.partido._cambiosEntranPistaLocal[i]._id === this.partido._jugadoresLocal[x]._id) {
           this.partido._jugadoresLocal[x]._estaJugando = true;
           this.partido._cambiosEntranPistaLocal[i]._estaJugando = true;
           break;
