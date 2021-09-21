@@ -26,6 +26,7 @@ export class PartidoComponent implements OnInit {
   ngOnInit() {
     this.data.match.subscribe(partido => this.partido = partido)
     let botonTimer = document.getElementById("timer");
+    let botonCambio = document.getElementById("cambio");
     if(this.partido._cuarto != null) {
       partidoEmpezado = true
     }
@@ -61,6 +62,14 @@ export class PartidoComponent implements OnInit {
       if(isTimerOn){
         botonTimer.setAttribute("class", "btn btn-danger")
         botonTimer.innerHTML = "Parar tiempo";
+        let botonCambio = document.getElementById("cambio");
+        (<HTMLInputElement> botonCambio).disabled = true;
+      }
+      else {
+        if(partidoEmpezado) {
+          let botonCambio = document.getElementById("cambio");
+          (<HTMLInputElement> botonCambio).disabled = false;
+        }
       }
     }
     for(let i = 0; i < this.partido._jugadoresLocal.length; i++) {
@@ -80,14 +89,26 @@ export class PartidoComponent implements OnInit {
         break;
       case "falta":
         this.partido._faltasLocal++;
-        if(!isTimerOn) {
-        }
-        else {
+        if(isTimerOn) { 
           clearInterval(interval);
           isTimerOn = false;
           this.Interval()
         }
         this.partido._jugadoresLocal[idJugador]._faltas++;
+        if(this.partido._jugadoresLocal[idJugador]._faltas >= 5) {
+          let jugadoresRestantes = this.partido._jugadoresLocal.length;
+          for(let i = 0; i < this.partido._jugadoresLocal.length; i++) {
+            if(this.partido._jugadoresLocal[i]._faltas >= 5) {
+              jugadoresRestantes--;
+            }
+          }
+          if(jugadoresRestantes >= 5) {
+            this.popupCambio()
+          }
+          else {
+            this.partido._jugadoresLocal[idJugador]._estaJugando = false;
+          }
+        }
         this.añadirMinutosAJugadores()
         break;
       case "rebote":
@@ -130,14 +151,26 @@ export class PartidoComponent implements OnInit {
         break;
       case "falta":
         this.partido._faltasVisitante++;
-        if(!isTimerOn) {
-        }
-        else {
+        if(isTimerOn) {
           clearInterval(interval);
           isTimerOn = false;
           this.Interval()
         }
         this.partido._jugadoresVisitante[idJugador]._faltas++;
+        if(this.partido._jugadoresVisitante[idJugador]._faltas >= 5) {
+          let jugadoresRestantes = this.partido._jugadoresVisitante.length;
+          for(let i = 0; i < this.partido._jugadoresVisitante.length; i++) {
+            if(this.partido._jugadoresVisitante[i]._faltas >= 5) {
+              jugadoresRestantes--;
+            }
+          }
+          if(jugadoresRestantes >= 5) {
+            this.popupCambio()
+          }
+          else {
+            this.partido._jugadoresVisitante[idJugador]._estaJugando = false;
+          }
+        }
         this.añadirMinutosAJugadores()
         break;
       case "rebote":
@@ -218,10 +251,14 @@ export class PartidoComponent implements OnInit {
     if (botonTimer.innerHTML == "Reanudar partido") {
       botonTimer.setAttribute("class", "btn btn-danger")
       botonTimer.innerHTML = "Parar tiempo";
+      let botonCambio = document.getElementById("cambio");
+      (<HTMLInputElement> botonCambio).disabled = true;
     } 
     else {
       botonTimer.setAttribute("class", "btn btn-success")
       botonTimer.innerHTML = "Reanudar partido";
+      let botonCambio = document.getElementById("cambio");
+      (<HTMLInputElement> botonCambio).disabled = false;
     }
   
     if (!interval) {

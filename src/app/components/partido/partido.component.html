@@ -4,7 +4,7 @@
             <div id="banquillo">
                 <h3>Banquillo: </h3>
                 <div *ngFor="let jugador of jugadoresLocal" id="accionesJugador">
-                    <div *ngIf="!partido._jugadoresLocal[jugador]._estaJugando">
+                    <div *ngIf="!partido._jugadoresLocal[jugador]._estaJugando && partido._jugadoresLocal[jugador]._faltas < 5">
                         <p>
                             <button type="button" class="btn btn-success" [disabled]="partidoAcabado" (click)="aniadirColaCambiosLocal(jugador)">
                                 {{partido._jugadoresLocal[jugador]._nombre}} {{partido._jugadoresLocal[jugador]._apellidos}}
@@ -18,7 +18,10 @@
                 <div *ngFor="let jugador of jugadoresLocal" id="accionesJugador">
                     <div *ngIf="partido._jugadoresLocal[jugador]._estaJugando">
                         <p>
-                            <button type="button" class="btn btn-warning" [disabled]="partidoAcabado" (click)="aniadirColaCambiosLocal(jugador)">
+                            <button *ngIf="partido._jugadoresLocal[jugador]._faltas < 5" type="button" class="btn btn-warning" [disabled]="partidoAcabado" (click)="aniadirColaCambiosLocal(jugador)">
+                                {{partido._jugadoresLocal[jugador]._nombre}} {{partido._jugadoresLocal[jugador]._apellidos}}
+                            </button>
+                            <button *ngIf="partido._jugadoresLocal[jugador]._faltas >= 5" type="button" class="btn btn-danger" [disabled]="partidoAcabado" (click)="aniadirColaCambiosLocal(jugador)">
                                 {{partido._jugadoresLocal[jugador]._nombre}} {{partido._jugadoresLocal[jugador]._apellidos}}
                             </button>
                         </p>
@@ -30,7 +33,7 @@
             <div id="banquillo">
                 <h3>Banquillo: </h3>
                 <div *ngFor="let jugador of jugadoresVisitante" id="accionesJugador">
-                    <div *ngIf="!partido._jugadoresVisitante[jugador]._estaJugando">
+                    <div *ngIf="!partido._jugadoresVisitante[jugador]._estaJugando && partido._jugadoresVisitante[jugador]._faltas < 5">
                         <p>
                             <button type="button" class="btn btn-success" [disabled]="partidoAcabado" (click)="aniadirColaCambiosVisitante(jugador)">
                                 {{partido._jugadoresVisitante[jugador]._nombre}} {{partido._jugadoresVisitante[jugador]._apellidos}}
@@ -44,7 +47,10 @@
                 <div *ngFor="let jugador of jugadoresVisitante" id="accionesJugador">
                     <div *ngIf="partido._jugadoresVisitante[jugador]._estaJugando">
                         <p>
-                            <button type="button" class="btn btn-warning" [disabled]="partidoAcabado" (click)="aniadirColaCambiosVisitante(jugador)">
+                            <button *ngIf="partido._jugadoresVisitante[jugador]._faltas < 5" type="button" class="btn btn-warning" [disabled]="partidoAcabado" (click)="aniadirColaCambiosVisitante(jugador)">
+                                {{partido._jugadoresVisitante[jugador]._nombre}} {{partido._jugadoresVisitante[jugador]._apellidos}}
+                            </button>
+                            <button *ngIf="partido._jugadoresVisitante[jugador]._faltas >= 5" type="button" class="btn btn-danger" [disabled]="partidoAcabado" (click)="aniadirColaCambiosVisitante(jugador)">
                                 {{partido._jugadoresVisitante[jugador]._nombre}} {{partido._jugadoresVisitante[jugador]._apellidos}}
                             </button>
                         </p>
@@ -52,7 +58,7 @@
                 </div>
             </div>
         </div>
-        <button type="button" id="cambio" class="btn btn-info" (click)="realizarCambios()" [disabled]="isTimerOn">
+        <button type="button" id="tiempoMuertoVisitante" class="btn btn-info" (click)="realizarCambios()">
             REALIZAR CAMBIOS
         </button>
     </div>
@@ -105,7 +111,5 @@
         </div>
     </div>
     <button id="timer" class="btn btn-success" (click)="Interval()">Reanudar partido</button>
-    <button type="button" id="tiempoMuertoVisitante" class="btn btn-info" (click)="popupCambio()">
-        CAMBIO
-    </button>
+    <button type="button" id="cambio" class="btn btn-info" (click)="popupCambio()">CAMBIO</button>
 </body>
