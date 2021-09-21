@@ -20,13 +20,17 @@ export class PartidoComponent implements OnInit {
   jugadoresLocal: number[] = new Array;
   jugadoresVisitante: number[] = new Array;
   hacerCambio: boolean = false;
+  jugadoresQueEntranLocal: number[] = new Array;
+  jugadoresQueSalenLocal: number[] = new Array;
+  jugadoresQueEntranVisitante: number[] = new Array;
+  jugadoresQueSalenVisitante: number[] = new Array;
+  sePuedeHacerCambio: boolean = false;
 
   constructor(private data: DataService) { }
 
   ngOnInit() {
     this.data.match.subscribe(partido => this.partido = partido)
     let botonTimer = document.getElementById("timer");
-    let botonCambio = document.getElementById("cambio");
     if(this.partido._cuarto != null) {
       partidoEmpezado = true
     }
@@ -77,6 +81,30 @@ export class PartidoComponent implements OnInit {
     }
     for(let i = 0; i < this.partido._jugadoresVisitante.length; i++) {
       this.jugadoresVisitante.push(i);
+    }
+    for(let i = 0; i < this.partido._cambiosEntranPistaLocal.length; i++) {
+      this.jugadoresQueEntranLocal.push(i);
+    }
+    for(let i = 0; i < this.partido._cambiosSalenPistaLocal.length; i++) {
+      this.jugadoresQueSalenLocal.push(i);
+    }
+    for(let i = 0; i < this.partido._cambiosEntranPistaVisitante.length; i++) {
+      this.jugadoresQueEntranVisitante.push(i);
+    }
+    for(let i = 0; i < this.partido._cambiosSalenPistaVisitante.length; i++) {
+      this.jugadoresQueSalenVisitante.push(i);
+    }
+    if(this.partido._cambiosEntranPistaLocal.length > 0 || this.partido._cambiosSalenPistaLocal.length > 0 ||
+      this.partido._cambiosEntranPistaVisitante.length > 0 || this.partido._cambiosSalenPistaVisitante.length > 0) {
+        this.hacerCambio = true;
+    }
+    if(this.jugadoresQueEntranLocal.length === this.jugadoresQueSalenLocal.length && 
+      this.jugadoresQueEntranVisitante.length === this.jugadoresQueSalenVisitante.length &&
+      (this.jugadoresQueEntranVisitante.length !== 0 || this.jugadoresQueEntranLocal.length !== 0)) {
+      this.sePuedeHacerCambio = true;
+    }
+    else{
+      this.sePuedeHacerCambio = false;
     }
   }
 
@@ -376,18 +404,38 @@ export class PartidoComponent implements OnInit {
   aniadirColaCambiosLocal(idJugador: number) {
     if(this.partido._jugadoresLocal[idJugador]._estaJugando) {
       this.partido._cambiosSalenPistaLocal.push(this.partido._jugadoresLocal[idJugador])
+      this.jugadoresQueSalenLocal.push(this.partido._cambiosSalenPistaLocal.length - 1)
     }
     else {
       this.partido._cambiosEntranPistaLocal.push(this.partido._jugadoresLocal[idJugador])
+      this.jugadoresQueEntranLocal.push(this.partido._cambiosEntranPistaLocal.length - 1)
+    }
+    if(this.jugadoresQueEntranLocal.length === this.jugadoresQueSalenLocal.length && 
+      this.jugadoresQueEntranVisitante.length === this.jugadoresQueSalenVisitante.length &&
+      (this.jugadoresQueEntranVisitante.length !== 0 || this.jugadoresQueEntranLocal.length !== 0)) {
+      this.sePuedeHacerCambio = true;
+    }
+    else{
+      this.sePuedeHacerCambio = false;
     }
   }
 
   aniadirColaCambiosVisitante(idJugador: number) {
     if(this.partido._jugadoresVisitante[idJugador]._estaJugando) {
       this.partido._cambiosSalenPistaVisitante.push(this.partido._jugadoresVisitante[idJugador])
+      this.jugadoresQueSalenVisitante.push(this.partido._cambiosSalenPistaVisitante.length - 1)
     }
     else {
       this.partido._cambiosEntranPistaVisitante.push(this.partido._jugadoresVisitante[idJugador])
+      this.jugadoresQueEntranVisitante.push(this.partido._cambiosEntranPistaVisitante.length - 1)
+    }
+    if(this.jugadoresQueEntranLocal.length === this.jugadoresQueSalenLocal.length && 
+      this.jugadoresQueEntranVisitante.length === this.jugadoresQueSalenVisitante.length &&
+      (this.jugadoresQueEntranVisitante.length !== 0 || this.jugadoresQueEntranLocal.length !== 0)) {
+      this.sePuedeHacerCambio = true;
+    }
+    else{
+      this.sePuedeHacerCambio = false;
     }
   }
 

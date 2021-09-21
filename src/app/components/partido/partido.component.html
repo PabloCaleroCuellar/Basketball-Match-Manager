@@ -28,6 +28,26 @@
                     </div>
                 </div>
             </div>
+            <div id="cambioPreparado">
+                <h3>Entran: </h3>
+                <div *ngFor="let jugador of jugadoresQueEntranLocal" id="accionesJugador">
+                    <div>
+                        <p>
+                            {{partido._cambiosEntranPistaLocal[jugador]._nombre}} {{partido._cambiosEntranPistaLocal[jugador]._apellidos}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div id="cambioPreparado">
+                <h3>Salen: </h3>
+                <div *ngFor="let jugador of jugadoresQueSalenLocal" id="accionesJugador">
+                    <div>
+                        <p>
+                            {{partido._cambiosSalenPistaLocal[jugador]._nombre}} {{partido._cambiosSalenPistaLocal[jugador]._apellidos}}
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
         <div id="partido-visitante-popup">
             <div id="banquillo">
@@ -57,8 +77,28 @@
                     </div>
                 </div>
             </div>
+            <div id="cambioPreparado">
+                <h3>Entran: </h3>
+                <div *ngFor="let jugador of jugadoresQueEntranVisitante" id="accionesJugador">
+                    <div>
+                        <p>
+                            {{partido._cambiosEntranPistaVisitante[jugador]._nombre}} {{partido._cambiosEntranPistaVisitante[jugador]._apellidos}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div id="cambioPreparado">
+                <h3>Salen: </h3>
+                <div *ngFor="let jugador of jugadoresQueSalenVisitante" id="accionesJugador">
+                    <div>
+                        <p>
+                            {{partido._cambiosSalenPistaVisitante[jugador]._nombre}} {{partido._cambiosSalenPistaVisitante[jugador]._apellidos}}
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <button type="button" id="tiempoMuertoVisitante" class="btn btn-info" (click)="realizarCambios()">
+        <button type="button" id="tiempoMuertoVisitante" class="btn btn-info" (click)="realizarCambios()" [disabled]="!sePuedeHacerCambio">
             REALIZAR CAMBIOS
         </button>
     </div>
